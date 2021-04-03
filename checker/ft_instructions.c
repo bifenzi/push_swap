@@ -6,12 +6,12 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 17:12:48 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/02 17:42:16 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:40:36 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
+/*
 int     ft_instructions(int *stack, int len)
 {
     char *instruction;
@@ -54,7 +54,7 @@ int     ft_instructions(int *stack, int len)
     {
         
     }
-    if(ft_strcmp(instruction, "rrb") == 0)
+    else if(ft_strcmp(instruction, "rrb") == 0)
     {
         
     }
@@ -62,4 +62,4 @@ int     ft_instructions(int *stack, int len)
     {
         
     }
-}
+}*/

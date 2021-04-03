@@ -6,11 +6,21 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/02 17:42:53 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:39:53 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
 
 int     ft_success(char *success)
 {
@@ -58,7 +68,12 @@ int main(int argc, char **argv)
     int len;
     int j;
     int *stack;
-        
+    int i;
+    char *instruction;
+    char **inst;
+    instruction = NULL;
+    inst = NULL;
+    i = 0;
     len = 0;
     j = 1;
     stack = malloc(sizeof(int) * ft_strlen(argv[j]));
@@ -73,8 +88,19 @@ int main(int argc, char **argv)
             j++;
         }
     }
-    ft_check_sort(stack, len);
-    printf("%d\n", len);
-    //ft_instructions(stack);
+    inst = (char**)malloc(len * sizeof(char*));
+    while (get_next_line(0, &instruction) > 0)
+    {
+            inst[i] = ft_strdup(instruction);
+            i++;
+    }
+    i = 0;
+    while (inst[i])
+    {
+        printf("%s\n--",inst[i]);
+        i++;
+    }
+    //ft_check_sort(stack, len);
+    //ft_instructions(stack, len);
     return(0);
 }
