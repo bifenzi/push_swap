@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/03 15:39:53 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/03 18:12:59 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int     ft_error(char *error)
         write(1, &error[i], 1);
         i++;
     }
+    exit(0);
     return(-1);
 }
 
@@ -53,13 +54,13 @@ int     ft_check_sort(int *stack, int len)
     while(len)
     {
         before = len - 1;
-        printf("%d\n", stack[len]);
+        printf("check-->|%d||\n", stack[len]);
         if(stack[len] > stack[before])
             len--;
         if(stack[len] < stack[before])
             return(ft_error("KO"));
     }
-    printf("%d\n", stack[len]);
+    printf("||%d||\n", stack[len]);
     return(ft_success("OK"));
 }
 
@@ -71,7 +72,6 @@ int main(int argc, char **argv)
     int i;
     char *instruction;
     char **inst;
-    instruction = NULL;
     inst = NULL;
     i = 0;
     len = 0;
@@ -88,19 +88,17 @@ int main(int argc, char **argv)
             j++;
         }
     }
+    instruction = (char*)malloc(len * sizeof(char*));
     inst = (char**)malloc(len * sizeof(char*));
     while (get_next_line(0, &instruction) > 0)
     {
             inst[i] = ft_strdup(instruction);
             i++;
     }
+    inst[i + 1] = "\0";
+    //printf("|%s|\n", inst[0]);
     i = 0;
-    while (inst[i])
-    {
-        printf("%s\n--",inst[i]);
-        i++;
-    }
-    //ft_check_sort(stack, len);
-    //ft_instructions(stack, len);
+    ft_check_sort(stack, len);
+    ft_instructions(inst, stack, len);
     return(0);
 }
