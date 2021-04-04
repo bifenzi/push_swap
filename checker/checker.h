@@ -7,7 +7,12 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-
+typedef struct	s_data
+{
+	int     *a;
+    int     *b;
+    char    **inst;
+}           t_data;
 /*gnl functions*/
 int		ft_finish(char **str, char **line);
 int		ft_remplissage(char **str, char **line, int len);
@@ -22,7 +27,8 @@ int		    ft_atoi(const char *str);
 int         ft_error(char *error);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
-int     ft_instructions(char **inst, int *stack, int len);
+int     ft_instructions(t_data stack, int len);
+int     ss_instruction(t_data stack, int i);
 
 
 #endif
