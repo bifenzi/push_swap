@@ -25,6 +25,7 @@ char	*ft_strchr(const char *s, int c);
 /*checker*/
 int		    ft_atoi(const char *str);
 int         ft_error(char *error);
+int     ft_success(char *success);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
 int     ft_instructions(t_data stack, int len);

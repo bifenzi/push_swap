@@ -21,6 +21,7 @@ int     ss_instruction(t_data stack, int i)
         tmp = stack.a[0];
         stack.a[0] = stack.a[1];
         stack.a[1] = tmp;
+        ft_success("nice");
     }
     if(ft_strcmp(stack.inst[i], "sb") == 0 || ft_strcmp(stack.inst[i], "ss") == 0)
     {
@@ -58,19 +59,21 @@ int     ft_instructions(t_data stack, int len)
             stack.a[0] = tmp[0];
             free(tmp);
         }
-        // else if(ft_strcmp(stack.inst[i], "ra") == 0)
-        // {
-        //     printf("before|%d|\n", stack.a[len]);
-        //     tmp[0] = stack.a[0];
-        //     while(len2 > 0)
-        //     {
-        //         stack.a[len - len2] = stack.a[len - len2 + 1];
-        //         tmp[len - len2 + 1] = stack.a[len - len2 + 2];
-        //         len2--;
-        //     }
-        //     stack.a[len] = tmp[0];
-        //     printf("after|%d|\n", stack.a[len]);
-        // }
+        else if(ft_strcmp(stack.inst[i], "ra") == 0)
+        {
+            int i;
+            i = 0;
+            printf("before|%d|\n", stack.a[0]);
+            tmp[0] = stack.a[0];
+            while(len2 >= i)
+            {
+                //printf("len2--%d--", len2);
+                stack.a[i] = stack.a[i + 1];
+                i++;
+            }
+            stack.a[len] = tmp[0];
+            printf("after|%d|\n", stack.a[0]);
+        }
         else if(ft_strcmp(stack.inst[i], "rb") == 0)
         {
             printf("success");

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/04 18:37:17 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/05 16:47:28 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int main(int argc, char **argv)
     i = 0;
     len = 0;
     j = 1;
-    stack.a = malloc(sizeof(int) * ft_strlen(argv[j]));
-    stack.b = malloc(sizeof(int) * ft_strlen(argv[j]));
+    stack.a = malloc(sizeof(int) * (argc - 1));
+    stack.b = malloc(sizeof(int) *  (argc - 1));
     if(argc < 2)
         ft_error("\ninvalid arguments\n");
     else
@@ -90,17 +90,18 @@ int main(int argc, char **argv)
         }
     }
     len--;
-    instruction = (char*)malloc(len * sizeof(char*));
-    stack.inst = (char**)malloc(len * sizeof(char*));
+    instruction = (char*)malloc(len * sizeof(char));
+     stack.inst = (char**)malloc((len+ 1 )* sizeof(char*)); // you dont know how much instruction he will give or execute while ur reading
     while (get_next_line(0, &instruction) > 0)
     {
+        printf("\n %s \n", instruction);
             stack.inst[i] = ft_strdup(instruction);
             i++;
     }
-    stack.inst[i + 1] = "\0";
+    stack.inst[i] = NULL;
     //printf("|%s|\n", inst[0]);
     i = 0;
     ft_instructions(stack, len);
-    ft_check_sort(stack, len);
+    ft_check_sort(stack, len); 
     return(0);
 }
