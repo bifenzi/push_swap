@@ -11,7 +11,7 @@ typedef struct	s_data
 {
 	int     *a;
     int     *b;
-    char    **inst;
+    char    *inst;
 }           t_data;
 /*gnl functions*/
 int		ft_finish(char **str, char **line);
@@ -29,7 +29,7 @@ int     ft_success(char *success);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
 int     ft_instructions(t_data stack, int len);
-int     ss_instruction(t_data stack, int i);
-
+int     ss_instruction(t_data stack);
+int      rr_instruction(t_data stack, int len2, int len);
 
 #endif
