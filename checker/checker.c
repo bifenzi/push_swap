@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/07 17:15:00 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:53:08 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ int main(int argc, char **argv)
     }
     stack.a[len + 1] = '\0';
     i = 0;
-    while(stack.a[i])
-    {
-        printf("\n%d\n", stack.a[i]);
-        i++;
-    }
+    // while(stack.a[i])
+    // {
+    //     printf("\n%d\n", stack.a[i]);
+    //     i++;
+    // }
     //printf("\n%d\n", stack.a[3]);
     ft_check_sort(stack, len);
     return(0);
