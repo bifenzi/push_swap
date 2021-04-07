@@ -100,27 +100,25 @@ int      rrr_instruction(t_data stack, int len2, int len)
 int     ft_instructions(t_data stack, int len)
 {
     int i;
-    int *tmp;
+    int tmp;
     int len2;
     len2 = len;
     i = 0;
-    tmp = malloc(sizeof(int) * len);
+    //tmp = malloc(sizeof(int) * len);
     if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "sb") == 0 ||
         ft_strcmp(stack.inst, "ss") == 0)
         ss_instruction(stack);
     else if(ft_strcmp(stack.inst, "pa") == 0)
     {
-        tmp[0] = stack.a[0];
+        tmp = stack.a[0];
         stack.a[0] = stack.b[0];
-        stack.b[0] = tmp[0];
-        free(tmp);
+        stack.b[0] = tmp;
     }
         else if(ft_strcmp(stack.inst, "pb") == 0)
         {
-            tmp[0] = stack.b[0];
+            tmp = stack.b[0];
             stack.b[0] = stack.a[0];
-            stack.a[0] = tmp[0];
-            free(tmp);
+            stack.a[0] = tmp;
         }
     else if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rb") == 0
             || ft_strcmp(stack.inst, "rr") == 0)

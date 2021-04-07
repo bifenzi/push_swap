@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/07 18:53:08 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/07 23:54:50 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int     ft_check_sort(t_data stack, int len)
             return(ft_error("KO"));
     }
     //printf("check sort->|%d|\n", stack.a[len]);
+    //free(stack.a);
+    //free(stack.b);
     return(ft_success("OK"));
 }
 
@@ -71,8 +73,8 @@ int main(int argc, char **argv)
     int j;
     t_data stack;
     //char **instruction;
-    int i;
-    i = 0;
+    //int i;
+    //i = 0;
     len = 0;
     j = 1;
     stack.a = malloc(sizeof(int) * (argc));
@@ -93,9 +95,14 @@ int main(int argc, char **argv)
     while (get_next_line(0, &stack.inst) > 0)
     {
         ft_instructions(stack, len);
+        free(stack.inst);
+        stack.inst = NULL;
     }
-    stack.a[len + 1] = '\0';
-    i = 0;
+    //stack.inst--;
+    // free(stack.inst);
+    // stack.inst = NULL;
+    // stack.a[len + 1] = '\0';
+    //i = 0;
     // while(stack.a[i])
     // {
     //     printf("\n%d\n", stack.a[i]);
@@ -103,5 +110,11 @@ int main(int argc, char **argv)
     // }
     //printf("\n%d\n", stack.a[3]);
     ft_check_sort(stack, len);
+    free(stack.a);
+    free(stack.b);
+    stack.a = NULL;
+    stack.b = NULL;
+    //free(stack.inst);
+
     return(0);
 }
