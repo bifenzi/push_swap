@@ -141,5 +141,8 @@ int     ft_instructions(t_data stack, int len)
         ft_error("\nINVALID INSTRUCTION \n");
     i++;
     //printf("after->|%d\n", stack_a[0]);
+    
+    // free(stack.a);
+    // free(stack.b);
     return(1);
 }

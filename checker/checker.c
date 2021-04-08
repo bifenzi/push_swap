@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/07 23:54:50 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:45:33 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int     ft_check_sort(t_data stack, int len)
     int before;
     
     len--;
+    printf("#%d\n",len);
     while(len)
     {
         before = len - 1;
@@ -98,6 +99,10 @@ int main(int argc, char **argv)
         free(stack.inst);
         stack.inst = NULL;
     }
+  //  if (stack.inst)
+    //    free(stack.inst);
+        
+    
     //stack.inst--;
     // free(stack.inst);
     // stack.inst = NULL;
@@ -109,12 +114,11 @@ int main(int argc, char **argv)
     //     i++;
     // }
     //printf("\n%d\n", stack.a[3]);
-    ft_check_sort(stack, len);
+    ft_check_sort(stack, argc - 1);
     free(stack.a);
     free(stack.b);
     stack.a = NULL;
     stack.b = NULL;
     //free(stack.inst);
-
     return(0);
 }
