@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/08 12:45:33 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/08 19:15:17 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,83 +42,72 @@ int     ft_error(char *error)
         write(1, &error[i], 1);
         i++;
     }
-    //exit(0);
+    exit(0);
     return(-1);
 }
 
+void ft_check_duplicate(t_data stack)
+{
+    int i;
+    int j ;
+
+    j = 0;
+    i = 0;
+    while (stack.a[i])
+    {
+        j = 0;
+        while (stack.a[j])
+        {
+            if (stack.a[i] == stack.a[j] && j != i)
+                ft_error("error");
+            j++;
+        }
+        
+        i++;
+    }
+}
 int     ft_check_sort(t_data stack, int len)
 {
     int before;
     
     len--;
-    printf("#%d\n",len);
     while(len)
     {
         before = len - 1;
-        //printf("check sort->|%d|\n", stack.a[len]);
         if(stack.a[len] > stack.a[before])
             len--;
         if(stack.a[len] < stack.a[before])
             return(ft_error("KO"));
     }
-    //printf("check sort->|%d|\n", stack.a[len]);
-    //free(stack.a);
-    //free(stack.b);
     return(ft_success("OK"));
 }
 
 int main(int argc, char **argv)
 {
-
-    int len;
     int j;
     t_data stack;
-    //char **instruction;
-    //int i;
-    //i = 0;
-    len = 0;
-    j = 1;
+    j = 0;
     stack.a = malloc(sizeof(int) * (argc));
     stack.b = malloc(sizeof(int) *  (argc));
     if(argc < 2)
         ft_error("\ninvalid arguments\n");
-    else
+    else if (argc > 2)
     {
-        while (argv[j])
+        while (argv[j + 1])
         {
-            stack.a[len] = ft_atoi(argv[j]);
-            len++;
+            if (ft_strchr("0123456789", (ft_atoi(argv[j + 1]))))
+                ft_error("error int");
+            stack.a[j] = ft_atoi(argv[j + 1]);
             j++;
         }
     }
-    len--;
-    //printf("\nlen%d\n", len);
-    while (get_next_line(0, &stack.inst) > 0)
-    {
-        ft_instructions(stack, len);
-        free(stack.inst);
-        stack.inst = NULL;
-    }
-  //  if (stack.inst)
-    //    free(stack.inst);
-        
     
-    //stack.inst--;
-    // free(stack.inst);
-    // stack.inst = NULL;
-    // stack.a[len + 1] = '\0';
-    //i = 0;
-    // while(stack.a[i])
-    // {
-    //     printf("\n%d\n", stack.a[i]);
-    //     i++;
-    // }
-    //printf("\n%d\n", stack.a[3]);
+    ft_check_duplicate(stack);
+    ft_read_arguments(stack, argc);
     ft_check_sort(stack, argc - 1);
     free(stack.a);
     free(stack.b);
     stack.a = NULL;
     stack.b = NULL;
-    //free(stack.inst);
     return(0);
 }
