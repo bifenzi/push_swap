@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/08 19:15:17 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/09 17:19:18 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void ft_check_duplicate(t_data stack)
                 ft_error("error");
             j++;
         }
-        
         i++;
     }
 }
@@ -81,7 +80,32 @@ int     ft_check_sort(t_data stack, int len)
     }
     return(ft_success("OK"));
 }
+void    ft_check_numbers(char **argv)
+{
+    int i;
+    int j;
 
+    i = 1;
+    while (argv[i])
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            if(!ft_isdigit((argv[i][j])))
+                ft_error("NOT INTEGER");
+                j++;
+        }
+        i++;
+    }
+}
+int ft_free(t_data stack)
+{
+    free(stack.a);
+    free(stack.b);
+    stack.a = NULL;
+    stack.b = NULL;
+    return(1);
+}
 int main(int argc, char **argv)
 {
     int j;
@@ -95,19 +119,15 @@ int main(int argc, char **argv)
     {
         while (argv[j + 1])
         {
-            if (ft_strchr("0123456789", (ft_atoi(argv[j + 1]))))
-                ft_error("error int");
             stack.a[j] = ft_atoi(argv[j + 1]);
             j++;
         }
     }
-    
+    stack.a[j] = '\0';
+    ft_check_numbers(argv);
     ft_check_duplicate(stack);
     ft_read_arguments(stack, argc);
     ft_check_sort(stack, argc - 1);
-    free(stack.a);
-    free(stack.b);
-    stack.a = NULL;
-    stack.b = NULL;
+    ft_free(stack);
     return(0);
 }
