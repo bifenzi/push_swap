@@ -12,6 +12,10 @@ typedef struct	s_data
 	int     *a;
     int     *b;
     char    *inst;
+    int     len_a;
+    int     *len_b;
+    int     pa;
+    int     pb;
 }           t_data;
 /*gnl functions*/
 int		    ft_finish(char **str, char **line);
@@ -34,5 +38,6 @@ int         ss_instruction(t_data stack);
 int         rr_instruction(t_data stack, int len2, int len);
 int         ft_free(t_data stack);
 int		    ft_isdigit(char c);
+int         ft_check_sort(t_data stack, int len);
 
 #endif

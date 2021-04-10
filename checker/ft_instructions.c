@@ -111,22 +111,66 @@ int     ft_instructions(t_data stack, int len)
         ss_instruction(stack);
     else if(ft_strcmp(stack.inst, "pa") == 0)
     {
-        tmp = stack.a[0];
-        stack.a[0] = stack.b[0];
-        stack.b[0] = tmp;
-    }
-        else if(ft_strcmp(stack.inst, "pb") == 0)
+        int compteur_a = 0;
+        int len_a;
+        int len_b;
+        len_a = stack.len_a;
+        len_b = stack.len_b[0];
+        
+        if(stack.pb)
         {
-            tmp = stack.b[0];
-            stack.b[0] = stack.a[0];
-            stack.a[0] = tmp;
+            while (compteur_a > len_a)
+            {
+                stack.a[len_a + 1] = stack.a[len_a];
+                compteur_a++;
+            }
+            stack.a[0] = stack.b[0];
+            while(len_b)
+            {
+                stack.b[len_b] = stack.b[len_b + 1];
+                len_b--;
+                if(len_b == 0)
+                    stack.b[len_b] = stack.b[len_b + 1];
+            }
         }
+        printf("\nstack a - - - > %d\n",stack.len_b[0]);
+        
+        stack.len_a++;
+        
+        stack.len_b--;
+        stack.pa = stack.len_a;
+    }
+    else if(ft_strcmp(stack.inst, "pb") == 0)
+    {
+        int pb = 0;
+        stack.pb = 1;
+        int compteur_b = 0;
+        if(stack.len_b)
+        {
+            while(stack.b[compteur_b])
+            {
+                tmp = stack.b[compteur_b];
+                stack.b[compteur_b + 1] = tmp;
+                compteur_b++;
+            }
+        }
+        stack.b[0] = stack.a[0];
+        while (pb < stack.len_a)
+        {
+            stack.a[pb] = stack.a[pb + 1];
+            pb++;
+        }
+        stack.len_a--;
+        stack.len_b[0] = stack.len_b[0] + 1;
+        printf("\nstack len b - - - > %d\n",*stack.len_b);
+        
+    }
+
     else if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rb") == 0
             || ft_strcmp(stack.inst, "rr") == 0)
     {
         rr_instruction(stack, len2, len);
     }
-        
 
     else if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrb") == 0
             || ft_strcmp(stack.inst, "rrr") == 0)

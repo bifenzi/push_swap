@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/09 17:19:18 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/10 19:21:36 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int     ft_error(char *error)
     return(-1);
 }
 
-void ft_check_duplicate(t_data stack)
+void    ft_check_duplicate(t_data stack)
 {
     int i;
     int j ;
@@ -72,13 +72,16 @@ int     ft_check_sort(t_data stack, int len)
     len--;
     while(len)
     {
+        //printf("\nstaaack a %d\n",stack.a[len]);
         before = len - 1;
         if(stack.a[len] > stack.a[before])
             len--;
         if(stack.a[len] < stack.a[before])
             return(ft_error("KO"));
     }
-    return(ft_success("OK"));
+    if (len == 0)
+        ft_success("OK");
+    return(0);
 }
 void    ft_check_numbers(char **argv)
 {
@@ -110,7 +113,13 @@ int main(int argc, char **argv)
 {
     int j;
     t_data stack;
+    stack.len_a = argc - 1;
+    stack.pb = 0;
+    stack.pa = 0;
     j = 0;
+    stack.len_b = malloc(10);
+    stack.len_b[0] = 0;
+    printf("\nstack a - - - > %d\n",stack.len_b[0]);
     stack.a = malloc(sizeof(int) * (argc));
     stack.b = malloc(sizeof(int) *  (argc));
     if(argc < 2)
@@ -127,6 +136,7 @@ int main(int argc, char **argv)
     ft_check_numbers(argv);
     ft_check_duplicate(stack);
     ft_read_arguments(stack, argc);
+    // printf("\nstack pb - - - > %d\n",stack.len_b);
     ft_check_sort(stack, argc - 1);
     ft_free(stack);
     return(0);
