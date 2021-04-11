@@ -22,7 +22,7 @@ $(NAME) :
 	@gcc -Wall -Wextra -Werror -c $(SRC)
 	@ar rc $(NAME) $(OBJECT)
 	@ranlib $(NAME)
-	@gcc checker.c $(NAME) -g #-fsanitize=address
+	@gcc checker.c $(NAME) -g -fsanitize=address
 
 bonus :
 	@echo "hello world"

@@ -12,10 +12,8 @@ typedef struct	s_data
 	int     *a;
     int     *b;
     char    *inst;
-    int     len_a;
+    int     *len_a;
     int     *len_b;
-    int     pa;
-    int     pb;
 }           t_data;
 /*gnl functions*/
 int		    ft_finish(char **str, char **line);

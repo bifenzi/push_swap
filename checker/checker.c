@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/10 19:21:36 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/11 17:01:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,14 @@ int main(int argc, char **argv)
 {
     int j;
     t_data stack;
-    stack.len_a = argc - 1;
-    stack.pb = 0;
-    stack.pa = 0;
+    
+    //*stack.pa =;
     j = 0;
+    stack.len_a = malloc(10);
     stack.len_b = malloc(10);
-    stack.len_b[0] = 0;
-    printf("\nstack a - - - > %d\n",stack.len_b[0]);
+    *stack.len_a = argc - 1;
+    *stack.len_b = 0;
+    //printf("\nstack a - - - > %d\n",stack.len_b[0]);
     stack.a = malloc(sizeof(int) * (argc));
     stack.b = malloc(sizeof(int) *  (argc));
     if(argc < 2)
@@ -135,8 +136,14 @@ int main(int argc, char **argv)
     stack.a[j] = '\0';
     ft_check_numbers(argv);
     ft_check_duplicate(stack);
-    ft_read_arguments(stack, argc);
+    ft_read_arguments(stack, *stack.len_a);
     // printf("\nstack pb - - - > %d\n",stack.len_b);
+    int i = 0;
+    while (i < *stack.len_a)
+    {
+        printf("\nstaack %d\n", stack.a[i]);
+        i++;
+    }
     ft_check_sort(stack, argc - 1);
     ft_free(stack);
     return(0);

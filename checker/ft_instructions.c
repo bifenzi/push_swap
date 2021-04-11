@@ -55,7 +55,7 @@ int      rr_instruction(t_data stack, int len2, int len)
             stack.a[i] = stack.a[i + 1];
             i++;
         }
-        stack.a[len] = tmp;
+        stack.a[*stack.len_a] = tmp;
     }
     if(ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
     {
@@ -102,68 +102,59 @@ int      rrr_instruction(t_data stack, int len2, int len)
 int     ft_instructions(t_data stack, int len)
 {
     int i;
-    int tmp;
     int len2;
-    len2 = len;
+    len2 = *stack.len_a;
     i = 0;
     if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "sb") == 0 ||
         ft_strcmp(stack.inst, "ss") == 0)
         ss_instruction(stack);
     else if(ft_strcmp(stack.inst, "pa") == 0)
     {
-        int compteur_a = 0;
+        int b;
         int len_a;
-        int len_b;
-        len_a = stack.len_a;
-        len_b = stack.len_b[0];
-        
-        if(stack.pb)
-        {
-            while (compteur_a > len_a)
-            {
-                stack.a[len_a + 1] = stack.a[len_a];
-                compteur_a++;
-            }
-            stack.a[0] = stack.b[0];
-            while(len_b)
-            {
-                stack.b[len_b] = stack.b[len_b + 1];
-                len_b--;
-                if(len_b == 0)
-                    stack.b[len_b] = stack.b[len_b + 1];
-            }
-        }
-        printf("\nstack a - - - > %d\n",stack.len_b[0]);
-        
-        stack.len_a++;
-        
-        stack.len_b--;
-        stack.pa = stack.len_a;
+
+        b = 0;
+        len_a = *stack.len_a;
+       if (stack.len_b)
+       {
+           *stack.len_a = *stack.len_a + 1 ;
+           while (len_a > 0)
+           {
+                stack.a[len_a] = stack.a[len_a - 1];
+                len_a--;
+           }
+           stack.a[0] = stack.b[0];
+           *stack.len_b = *stack.len_b - 1;
+           while (b < *stack.len_b )
+           {
+               stack.b[b] = stack.b[b + 1];
+               b++;
+           }
+       }
+       //printf("\n pa - > %d\n", stack.b[0]);
     }
     else if(ft_strcmp(stack.inst, "pb") == 0)
     {
-        int pb = 0;
-        stack.pb = 1;
-        int compteur_b = 0;
-        if(stack.len_b)
+        int a = 0;
+        if (stack.len_a)
         {
-            while(stack.b[compteur_b])
+            *stack.len_b = *stack.len_b + 1;
+            int len_b = *stack.len_b;
+            while (len_b > 0)
             {
-                tmp = stack.b[compteur_b];
-                stack.b[compteur_b + 1] = tmp;
-                compteur_b++;
+                stack.b[len_b] = stack.b[len_b - 1];
+                len_b--;  
             }
+            stack.b[0] = stack.a[0];
+            stack.a[*stack.len_a] = 0;
+            *stack.len_a = *stack.len_a - 1;
+            while (a < *stack.len_a )
+           {
+               stack.a[a] = stack.a[a + 1];
+               a++;
+           }
+           //printf("\n pb - > %d\n", stack.a[0]);
         }
-        stack.b[0] = stack.a[0];
-        while (pb < stack.len_a)
-        {
-            stack.a[pb] = stack.a[pb + 1];
-            pb++;
-        }
-        stack.len_a--;
-        stack.len_b[0] = stack.len_b[0] + 1;
-        printf("\nstack len b - - - > %d\n",*stack.len_b);
-        
     }
 
     else if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rb") == 0
