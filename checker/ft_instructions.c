@@ -32,6 +32,9 @@ int      ss_instruction(t_data stack)
         tmp = stack.a[0];
         stack.a[0] = stack.a[1];
         stack.a[1] = tmp;
+        // printf("\nstaack [0]---%d\n", stack.a[0]);
+        // printf("\nstaack [1]---%d\n", stack.a[1]);
+
     }
     if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
     {
@@ -119,12 +122,12 @@ ft_instructions(t_data stack)
         int len_a;
 
         b = 0;
-        len_a = *stack.len_a;
-        //printf("\nlen_b %d\n", *stack.len_b);
+        ;
        if (*stack.len_b)
        {
            
-           *stack.len_a = *stack.len_a + 1 ;
+           *stack.len_a = *stack.len_a + 1;
+           len_a = *stack.len_a;
            while (len_a > 0)
            {
                 stack.a[len_a] = stack.a[len_a - 1];
@@ -138,7 +141,7 @@ ft_instructions(t_data stack)
                b++;
            }
        }
-       //printf("\n pa - > %d\n", stack.b[0]);
+       //printf("\n pa - > %d\n", stack.a[*stack.len_a]);
     }
     else if(ft_strcmp(stack.inst, "pb") == 0)
     {

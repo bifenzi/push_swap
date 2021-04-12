@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/12 14:36:09 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:22:52 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int     ft_check_sort(t_data stack, int len)
 {
     int before;
     
-    len--;
+    //len--;
     while(len)
     {
         before = len - 1;
