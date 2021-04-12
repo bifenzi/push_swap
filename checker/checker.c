@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/11 17:01:49 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/12 14:36:09 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int     ft_check_sort(t_data stack, int len)
     len--;
     while(len)
     {
-        //printf("\nstaaack a %d\n",stack.a[len]);
         before = len - 1;
         if(stack.a[len] > stack.a[before])
             len--;
@@ -87,17 +86,23 @@ void    ft_check_numbers(char **argv)
 {
     int i;
     int j;
+    long a;
 
     i = 1;
     while (argv[i])
     {
         j = 0;
+        if (argv[i][0] == '-')
+            j++;
         while (argv[i][j])
         {
             if(!ft_isdigit((argv[i][j])))
                 ft_error("NOT INTEGER");
-                j++;
+            j++;
         }
+        a = ft_atoi(argv[i]);
+        if (a > INT32_MAX || a < INT32_MIN)
+            ft_error("NOT INTEGER");
         i++;
     }
 }
@@ -105,6 +110,8 @@ int ft_free(t_data stack)
 {
     free(stack.a);
     free(stack.b);
+    free(stack.len_a);
+    free(stack.len_b);
     stack.a = NULL;
     stack.b = NULL;
     return(1);
@@ -118,7 +125,7 @@ int main(int argc, char **argv)
     j = 0;
     stack.len_a = malloc(10);
     stack.len_b = malloc(10);
-    *stack.len_a = argc - 1;
+    *stack.len_a = argc - 2;
     *stack.len_b = 0;
     //printf("\nstack a - - - > %d\n",stack.len_b[0]);
     stack.a = malloc(sizeof(int) * (argc));
@@ -136,15 +143,15 @@ int main(int argc, char **argv)
     stack.a[j] = '\0';
     ft_check_numbers(argv);
     ft_check_duplicate(stack);
-    ft_read_arguments(stack, *stack.len_a);
-    // printf("\nstack pb - - - > %d\n",stack.len_b);
-    int i = 0;
-    while (i < *stack.len_a)
+    ft_read_arguments(stack);
+    //printf("\nstack pb - - - > %d\n",stack.len_b);
+   int i = 0;
+    while (i <= *stack.len_a)
     {
-        printf("\nstaack %d\n", stack.a[i]);
+        printf("\nstaack aaaa%d\n", stack.a[i]);
         i++;
     }
-    ft_check_sort(stack, argc - 1);
+    ft_check_sort(stack, *stack.len_a);
     ft_free(stack);
     return(0);
 }

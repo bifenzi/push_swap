@@ -12,11 +12,11 @@
 
 #include "checker.h"
 
-int     ft_read_arguments(t_data stack, int argc)
+int     ft_read_arguments(t_data stack)
 {
     while (get_next_line(0, &stack.inst) > 0)
     {
-        ft_instructions(stack, argc);
+        ft_instructions(stack);
         free(stack.inst);
         stack.inst = NULL;
     }
@@ -41,7 +41,7 @@ int      ss_instruction(t_data stack)
     }
     return(1);
 }
-int      rr_instruction(t_data stack, int len2, int len)
+int      rr_instruction(t_data stack, int len2)
 {
     int tmp;
 
@@ -67,17 +67,19 @@ int      rr_instruction(t_data stack, int len2, int len)
             stack.b[i] = stack.b[i + 1];
             i++;
         }
-        stack.b[len] = tmp;
+        stack.b[*stack.len_b] = tmp;
     }
     return(1);
 }
-int      rrr_instruction(t_data stack, int len2, int len)
+int      rrr_instruction(t_data stack, int len2)
 {
     int tmp;
-    len2 = len;
+    len2 = *stack.len_a;
     if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
     {
-        tmp = stack.a[len];
+        //printf("\n len2 %d\n", len2);
+        //printf("\n len2 %d\n", stack.a[len2]);
+        tmp = stack.a[*stack.len_a];
         
         while(len2 >= 0)
         {
@@ -86,20 +88,23 @@ int      rrr_instruction(t_data stack, int len2, int len)
         }
         stack.a[0] = tmp;
     }
-    len2 = len;
+    len2 = *stack.len_b;
     if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
     {
-        tmp = stack.b[len];
+        
+        tmp = stack.b[*stack.len_b - 1];
         while(len2 > 0)
         {
             stack.b[len2] = stack.b[len2 - 1];
             len2--;
         }
         stack.b[0] = tmp;
+        
     }
     return(1);
 }
-int     ft_instructions(t_data stack, int len)
+int     
+ft_instructions(t_data stack)
 {
     int i;
     int len2;
@@ -115,8 +120,10 @@ int     ft_instructions(t_data stack, int len)
 
         b = 0;
         len_a = *stack.len_a;
-       if (stack.len_b)
+        //printf("\nlen_b %d\n", *stack.len_b);
+       if (*stack.len_b)
        {
+           
            *stack.len_a = *stack.len_a + 1 ;
            while (len_a > 0)
            {
@@ -136,37 +143,36 @@ int     ft_instructions(t_data stack, int len)
     else if(ft_strcmp(stack.inst, "pb") == 0)
     {
         int a = 0;
-        if (stack.len_a)
+        if (*stack.len_a)
         {
-            *stack.len_b = *stack.len_b + 1;
-            int len_b = *stack.len_b;
-            while (len_b > 0)
+            
+            len2 = *stack.len_b;
+            while (len2 > 0)
             {
-                stack.b[len_b] = stack.b[len_b - 1];
-                len_b--;  
+                stack.b[len2] = stack.b[len2 - 1];
+                len2--;
             }
             stack.b[0] = stack.a[0];
-            stack.a[*stack.len_a] = 0;
-            *stack.len_a = *stack.len_a - 1;
-            while (a < *stack.len_a )
+            while (a < *stack.len_a)
            {
                stack.a[a] = stack.a[a + 1];
                a++;
            }
-           //printf("\n pb - > %d\n", stack.a[0]);
+           *stack.len_a = *stack.len_a - 1;
+           *stack.len_b = *stack.len_b + 1;
         }
     }
 
     else if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rb") == 0
             || ft_strcmp(stack.inst, "rr") == 0)
     {
-        rr_instruction(stack, len2, len);
+        rr_instruction(stack, len2);
     }
 
     else if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrb") == 0
             || ft_strcmp(stack.inst, "rrr") == 0)
     {
-        rrr_instruction(stack, len2, len);
+        rrr_instruction(stack, len2);
     }
         
     else if(ft_strcmp(stack.inst, "\n") == 0 || ft_strcmp(stack.inst, "\0") == 0 )

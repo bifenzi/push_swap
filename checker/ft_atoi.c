@@ -6,16 +6,16 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:42:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/01 14:07:41 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/12 14:35:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		ft_atoi(const char *str)
+long		ft_atoi(const char *str)
 {
 	int		i;
-	size_t	result;
+	long	result;
 	int		sign;
 
 	i = 0;
@@ -30,11 +30,11 @@ int		ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
-		if (result > 4294967295 && sign == -1)
+		/*if (result > 4294967295 && sign == -1)
 			return (0);
 		else if (result > 4294967295 && sign == 1)
-			return (-1);
+			return (-1);*/
 		i++;
 	}
-	return ((int)result * sign);
+	return (result * sign);
 }
