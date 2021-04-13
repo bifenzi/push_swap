@@ -25,17 +25,25 @@ char	    *ft_substr(char const *s, unsigned int start, size_t len);
 char	    *ft_strjoin(char const *s1, char const *s2);
 char	    *ft_strchr(const char *s, int c);
 /*checker*/
-long		    ft_atoi(const char *str);
+long		ft_atoi(const char *str);
 int         ft_error(char *error);
 int         ft_success(char *success);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
-int         ft_read_arguments(t_data stack);
-int         ft_instructions(t_data stack);
-int         ss_instruction(t_data stack);
-int         rr_instruction(t_data stack, int len2);
+int         ft_allocate( int argc);
+int         ft_read_instructions(t_data stack);
+int         ft_instructions(t_data stack);         
 int         ft_free(t_data stack);
 int		    ft_isdigit(char c);
+void        ft_check_numbers(char **argv);
+void        ft_check_duplicate(t_data stack);
 int         ft_check_sort(t_data stack, int len);
+int         ft_read_arguments(t_data stack, char **argv);
 
+/*instructions*/
+void         pa_instruction(t_data stack);
+void         pb_instruction(t_data stack,int len2);
+void         ss_instruction(t_data stack);
+void         rr_instruction(t_data stack, int len2);
+void         rrr_instruction(t_data stack, int len2);
 #endif
