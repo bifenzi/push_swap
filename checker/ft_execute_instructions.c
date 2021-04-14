@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/13 18:23:55 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/14 13:34:27 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,77 +64,26 @@ void	pb_instruction(t_data stack, int len2)
 
 void	ss_instruction(t_data stack)
 {
-	int tmp;
-
 	if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "ss") == 0)
-	{
-		tmp = stack.a[0];
-		stack.a[0] = stack.a[1];
-		stack.a[1] = tmp;
-	}
+		sa_instruction(stack);
 	if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
-	{
-		tmp = stack.b[0];
-		stack.b[0] = stack.b[1];
-		stack.b[1] = tmp;
-	}
-}
-
-void	rr_instruction(t_data stack, int len2)
-{
-	int tmp;
-
-	if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-	{
-		int i;
-		i = 0;
-		tmp = *stack.a;
-		while(len2 > i)
-		{
-			stack.a[i] = stack.a[i + 1];
-			i++;
-		}
-		stack.a[*stack.len_a] = tmp;
-	}
-	if (ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-	{
-		int i;
-		i = 0;
-		tmp = stack.b[0];
-		while(len2 > i)
-		{
-			stack.b[i] = stack.b[i + 1];
-			i++;
-		}
-		stack.b[*stack.len_b] = tmp;
-	}
+		sb_instruction(stack);
 }
 
 void	rrr_instruction(t_data stack, int len2)
 {
-	int tmp;
 	len2 = *stack.len_a;
 	if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-	{
-		tmp = stack.a[*stack.len_a];
-
-		while(len2 >= 0)
-		{
-			stack.a[len2] = stack.a[len2 - 1];
-			len2--;
-		}
-		stack.a[0] = tmp;
-	}
+		rra_instruction(stack, len2);
 	len2 = *stack.len_b;
 	if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-	{
+		rrb_instruction(stack, len2);
+}
 
-		tmp = stack.b[*stack.len_b - 1];
-		while(len2 > 0)
-		{
-			stack.b[len2] = stack.b[len2 - 1];
-			len2--;
-		}
-		stack.b[0] = tmp;
-	}
+void   rr_instruction(t_data stack, int len2)
+{
+	if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rr") == 0)
+		ra_instruction(stack, len2);
+	if(ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
+		rb_instruction(stack, len2);
 }

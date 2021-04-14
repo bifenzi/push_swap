@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRC = ft_atoi.c ft_strcmp.c checker.c get_next_line.c get_next_line_utils.c ft_instructions.c ft_isdigit.c \
-		ft_check_errors.c ft_execute_instructions.c
+		ft_check_errors.c ft_execute_instructions.c ft_execute_instructions2.c
 
 OBJECT = *.o
 

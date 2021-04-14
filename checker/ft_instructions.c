@@ -12,6 +12,24 @@
 
 #include "checker.h"
 
+void    sa_instruction(t_data stack)
+{
+    int tmp;
+    
+    tmp = stack.a[0];
+		stack.a[0] = stack.a[1];
+		stack.a[1] = tmp;
+}
+
+void    sb_instruction(t_data stack)
+{
+    int tmp;
+    
+    tmp = stack.b[0];
+		stack.b[0] = stack.b[1];
+		stack.b[1] = tmp;
+}
+
 int	ft_read_instructions(t_data stack)
 {
 	while (get_next_line(0, &stack.inst) > 0)
@@ -53,3 +71,4 @@ int	ft_instructions(t_data stack)
 	i++;
 	return (1);
 }
+

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/13 15:09:30 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:48:47 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void    ft_check_duplicate(t_data stack)
 int     ft_check_sort(t_data stack, int len)
 {
     int before;
-    
+    if (*stack.len_a == 0)
+        ft_error("KO"); 
     while(len)
     {
         before = len - 1;

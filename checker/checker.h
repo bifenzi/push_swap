@@ -43,7 +43,13 @@ int         ft_read_arguments(t_data stack, char **argv);
 /*instructions*/
 void         pa_instruction(t_data stack);
 void         pb_instruction(t_data stack,int len2);
+void         sa_instruction(t_data stack);
+void         sb_instruction(t_data stack);
 void         ss_instruction(t_data stack);
-void         rr_instruction(t_data stack, int len2);
+void         rra_instruction(t_data stack, int len2);
+void         rrb_instruction(t_data stack, int len2);
 void         rrr_instruction(t_data stack, int len2);
+void         ra_instruction(t_data stack,int len2);
+void         rb_instruction(t_data stack,int len2);
+void         rr_instruction(t_data stack, int len2);
 #endif
