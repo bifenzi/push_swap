@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/13 15:23:12 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/15 15:47:08 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int     ft_success(char *success)
         write(1, &success[i], 1);
         i++;
     }
-    return(1);
+    return(0);
 }
 int     ft_error(char *error)
 {
@@ -43,7 +43,7 @@ int     ft_error(char *error)
         i++;
     }
     exit(0);
-    return(-1);
+    return(1);
 }
 
 

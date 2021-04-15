@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/14 16:44:55 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/15 16:11:03 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,29 @@ ft_execute_sort(t_data stack)
 
     len2 = *stack.len_a;
     i = 0;
-    while(stack.a[i] && *stack.len_a > 2)
+    while(ft_check_sort(stack, *stack.len_a))
     {
-        if (*stack.len_b >= 2)
+        while (*stack.len_a > 2)
         {
-            if (stack.b[*stack.len_b] > stack.b[0] && stack.a[i] > stack.a[*stack.len_a)
-                rrr_instruction(stack, len2);
-                
-        }
-        if (stack.a[i] > stack.a[*stack.len_a])
-        {
-            rra_instruction(stack, len2);
-        }
-        if (stack.a[0] > stack.a[1])
-        {
-            sa_instruction(stack);
-        }
+            if (*stack.len_b >= 2)
+            {
+                if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
+                    rrr_instruction(stack, len2);
+                if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
+                    rrb_instruction(stack, len2);
+                if (stack.b[1] > stack.b[0] && stack.a[1] > stack.a[0])
+                    ss_instruction(stack);
+            }
+            if (stack.a[i] > stack.a[*stack.len_a])
+            {
+                rra_instruction(stack, len2);
+            }
+            if (stack.a[0] > stack.a[1] && stack)
+            {
+                sa_instruction(stack);
+            }
         
-    }
+        }
 }
 
 int     main(int argc, char **argv)
