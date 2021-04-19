@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   zyada.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 14:44:39 by mbifenzi         ###   ########.fr       */
+/*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/04/19 17:06:29 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -42,8 +42,9 @@ int     ft_error(char *error)
         write(1, &error[i], 1);
         i++;
     }
-    exit(0);
     return(1);
+    //exit(0);
+    
 }
 
 
@@ -71,28 +72,5 @@ int         ft_read_arguments(t_data stack, char **argv)
         j++;
     }
     stack.a[j] = '\0';
-    return(0);
-}
-int main(int argc, char **argv)
-{
-    t_data stack;
-    
-    stack.len_a = malloc(sizeof(int));
-    stack.len_b = malloc(sizeof(int));
-    stack.a = malloc(sizeof(int) * (argc));
-    stack.b = malloc(sizeof(int) *  (argc));   
-    *stack.len_a = argc - 2;
-    *stack.len_b = 0;
-    if(argc < 2)
-        ft_error("\ninvalid arguments\n");
-    else if (argc > 2)
-        ft_read_arguments(stack, argv);
-    
-    ft_check_numbers(argv);
-    ft_check_duplicate(stack);
-    ft_read_instructions(stack);
-    ft_check_sort(stack);
-    ft_free(stack);
-    while(1);
     return(0);
 }

@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 14:45:18 by mbifenzi         ###   ########.fr       */
+/*   Created: 2019/10/15 19:39:27 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/04/09 17:16:59 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-void    ft_stack_b(t_data stack, int len2);
-int     ft_check_sort_b(t_data stack);
-#endif
+int		ft_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}

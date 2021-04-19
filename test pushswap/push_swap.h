@@ -1,5 +1,18 @@
-#ifndef CHECKER_H
-# define CHECKER_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/04/19 17:00:56 by mbifenzi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -7,6 +20,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+
 typedef struct	s_data
 {
 	int     *a;
@@ -15,6 +29,9 @@ typedef struct	s_data
     int     *len_a;
     int     *len_b;
 }           t_data;
+void    ft_stack_b(t_data stack, int len2);
+int     ft_check_sort_b(t_data stack);
+
 /*gnl functions*/
 int		    ft_finish(char **str, char **line);
 int		    ft_remplissage(char **str, char **line, int len);

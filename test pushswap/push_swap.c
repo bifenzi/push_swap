@@ -6,11 +6,10 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 16:52:01 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/19 17:14:24 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
 #include "push_swap.h"
 int     ft_check_sort_b(t_data stack)
 {
@@ -56,8 +55,11 @@ int ft_execute_sort(t_data stack)
 
     len2 = *stack.len_a;
     i = 0;
+    //printf("\n%d\n", ft_check_sort(stack));
+    
     while(ft_check_sort(stack) && i < len2)
     {
+        //printf("\n%d\n%d\n", i, len2);
         while (*stack.len_a >= 2)
         {
             if (*stack.len_b >= 2)
@@ -68,18 +70,21 @@ int ft_execute_sort(t_data stack)
                 ra_instruction(stack, len2);
             if (stack.a[0] > stack.a[1])
                 sa_instruction(stack);
-        }
-        if (ft_check_sort(stack) == 0 && *stack.len_b && ft_check_sort_b(stack) == 0)
-        {
-            while (*stack.len_b)
+            if (ft_check_sort(stack) == 0 && *stack.len_b && ft_check_sort_b(stack) == 0)
             {
+                while (*stack.len_b)
+                {   
                     pa_instruction(stack);
                     *stack.len_b = *stack.len_b - 1;
+                }
+                break ;
             }
         }
+        
         if (ft_check_sort(stack) == 1)
             pb_instruction(stack, len2);
         i++;
+        
     }
     return(0);
 }
