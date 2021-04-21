@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/20 17:31:04 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:33:01 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int     ft_check_sort_b(t_data stack)
 }
 void    ft_stack_b(t_data stack, int len2)
 {
+    //printf("\nstack.b - - %d\n", stack.b[0]);
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
         rrr_instruction(stack, len2);
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
@@ -39,7 +40,10 @@ void    ft_stack_b(t_data stack, int len2)
     if (stack.b[*stack.len_b] < stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
         rra_instruction(stack, len2);
     if (stack.b[1] > stack.b[0] && stack.a[1] < stack.a[0])
+    {
+       // printf("wawaawawaw");
         sb_instruction(stack);
+    }
     if (stack.a[0] > stack.a[1] && stack.b[1] > stack.b[0])
         sa_instruction(stack);
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
@@ -55,14 +59,16 @@ int ft_execute_sort(t_data stack)
 
     len2 = *stack.len_a;
     i = 0;
-    while(ft_check_sort(stack) && i < len2)
+    while(ft_check_sort(stack) && i <= len2)
     {
         //printf("sasasasas");
        // break ;
-        //printf("\n%d\n%d\n", i, len2);
+        
         while (*stack.len_a >= 2)
         {
-            if (*stack.len_b >= 2)
+            printf("\nleee n - - %d\n", len2);
+            //printf("\nstack.a - - %d\n", stack.a[0]);
+            if (*stack.len_b >= 1)
                 ft_stack_b(stack, len2);
             if (stack.a[0] > stack.a[*stack.len_a])
                 rra_instruction(stack, len2);
@@ -81,10 +87,10 @@ int ft_execute_sort(t_data stack)
             }
             if (ft_check_sort(stack) == 1)
             {
-                pb_instruction(stack, len2);
+                pb_instruction(stack);
             }
-            if (ft_check_sort(stack) == 0)
-                break ;
+            // if (ft_check_sort(stack) == 0)
+            //     break ;
         }
         i++;
     }
@@ -104,5 +110,6 @@ int     main(int argc, char **argv)
     ft_check_numbers(argv);
     ft_check_duplicate(stack);
     ft_execute_sort(stack);
+    ft_free(stack);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 17:00:56 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:32:28 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int         ft_read_arguments(t_data stack, char **argv);
 
 /*instructions*/
 void         pa_instruction(t_data stack);
-void         pb_instruction(t_data stack,int len2);
+void         pb_instruction(t_data stack);
 void         sa_instruction(t_data stack);
 void         sb_instruction(t_data stack);
 void         ss_instruction(t_data stack);

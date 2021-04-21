@@ -29,7 +29,7 @@ void    sb_instruction(t_data stack)
     tmp = stack.b[0];
 		stack.b[0] = stack.b[1];
 		stack.b[1] = tmp;
-	ft_success("sa\n");
+	ft_success("sb\n");
 }
 
 int	ft_read_instructions(t_data stack)
