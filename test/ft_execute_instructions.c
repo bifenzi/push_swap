@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 17:08:42 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/24 13:37:59 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void	pb_instruction(t_data stack, int len2)
 
 void	ss_instruction(t_data stack)
 {
-	if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "ss") == 0)
+	//if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "ss") == 0)
 		sa_instruction(stack);
-	if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
+	//if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
 		sb_instruction(stack);
-	ft_success("ss\n");
+	//ft_success("ss\n");
 }
 
 void	rrr_instruction(t_data stack, int len2)
