@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/24 14:01:57 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:06:25 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int     ft_check_sort_b(t_data stack)
 {
     int before;
     int len = *stack.len_b;
-    while(*stack.len_b)
+    while(len)
     {
         before = len - 1;
         if (stack.b[len] < stack.b[before])
@@ -32,7 +32,7 @@ void    ft_stack_b(t_data stack, int len2)
         rrr_instruction(stack, len2);
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
         rr_instruction(stack, len2);
-    if (stack.b[1] < stack.b[0] && stack.a[1] < stack.a[0])
+    if (stack.b[1] > stack.b[0] && stack.a[1] < stack.a[0])
         ss_instruction(stack);
     
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
@@ -42,10 +42,14 @@ void    ft_stack_b(t_data stack, int len2)
     if (stack.b[1] > stack.b[0] && stack.a[1] < stack.a[0])
     {
        // printf("wawaawawaw");
+       // printf("\nstack.b 0 - - %d\n", stack.b[0]);
+        //printf("\nstack.b 1 - - %d\n", stack.b[1]);
         sb_instruction(stack);
     }
     if (stack.a[0] > stack.a[1] && stack.b[1] > stack.b[0])
     {
+        //printf("\nstack 0--%d\n", stack.a[0]);
+        //printf("\nstack 1--%d\n", stack.a[1]);
         sa_instruction(stack);
     }
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
@@ -68,9 +72,6 @@ int ft_execute_sort(t_data stack)
         
         while (*stack.len_a >= 1)
         {
-            printf("\nleee n - - %d\n", *stack.len_a);
-            printf("\nleee b - - %d\n", *stack.len_b);
-            //printf("\nstack.a - - %d\n", stack.a[0]);
             if (*stack.len_b >= 1)
             {
                 ft_stack_b(stack, len2);
@@ -81,22 +82,26 @@ int ft_execute_sort(t_data stack)
                 ra_instruction(stack, len2);
             if (stack.a[0] > stack.a[1])
                 sa_instruction(stack);
-            if (ft_check_sort(stack) == 0 && *stack.len_b && ft_check_sort_b(stack) == 0)
+            //printf("\nlen b == - - %d\n", *stack.len_b);
+            if (ft_check_sort(stack) == 0 && *stack.len_b > 0 && ft_check_sort_b(stack) == 0)
             {
-                while (*stack.len_b)
+                //printf("\nstack.a - - %d\n", stack.a[0]);
+                //printf("\nlen b == - - %d\n", *stack.len_b);
+                while (*stack.len_b > 0)
                 {
+                    //printf("\nlen b == - - %d\n", *stack.len_b);
                     pa_instruction(stack);
-                    *stack.len_b = *stack.len_b - 1;
+                    //*stack.len_b = *stack.len_b - 1; 
                 }
-                break ;
+                //break ;
             }
             if (ft_check_sort(stack) == 1)
             {
-                write(1,"SSSSS\n",6);
+                //write(1,"dddddd\n",6);
                 pb_instruction(stack);
             }
-            // if (ft_check_sort(stack) == 0)
-            //     break ;
+            if (ft_check_sort(stack) == 0)
+                break ;
         }
         i++;
     }
@@ -117,5 +122,11 @@ int     main(int argc, char **argv)
     ft_check_duplicate(stack);
     ft_execute_sort(stack);
     ft_free(stack);
+    //int i = 0;
+    // while(i > *stack.len_a )
+    // {
+    //     printf("\nstaack.a = = %d\n", stack.a[i]);
+    //     i++;
+    // }
     return (0);
 }

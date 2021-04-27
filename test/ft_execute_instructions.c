@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/24 13:37:59 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/27 12:17:16 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,25 @@ void	ss_instruction(t_data stack)
 	//if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
 		sb_instruction(stack);
 	//ft_success("ss\n");
+	ft_success("ss");
 }
 
 void	rrr_instruction(t_data stack, int len2)
 {
 	len2 = *stack.len_a;
-	if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-		rra_instruction(stack, len2);
+	//if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
+	rra_instruction(stack, len2);
 	len2 = *stack.len_b;
-	if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-		rrb_instruction(stack, len2);
+	//if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
+	rrb_instruction(stack, len2);
+	ft_success("rrr");
 }
 
 void   rr_instruction(t_data stack, int len2)
 {
-	if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rr") == 0)
+	//if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rr") == 0)
 		ra_instruction(stack, len2);
-	if(ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
+	//if(ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
 		rb_instruction(stack, len2);
+		ft_success("rr");
 }
