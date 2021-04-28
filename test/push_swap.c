@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/27 15:06:25 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:36:26 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,14 @@ void    ft_stack_b(t_data stack, int len2)
         rr_instruction(stack, len2);
     if (stack.b[1] > stack.b[0] && stack.a[1] < stack.a[0])
         ss_instruction(stack);
-    
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
         rrb_instruction(stack, len2);
     if (stack.b[*stack.len_b] < stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
         rra_instruction(stack, len2);
     if (stack.b[1] > stack.b[0] && stack.a[1] < stack.a[0])
-    {
-       // printf("wawaawawaw");
-       // printf("\nstack.b 0 - - %d\n", stack.b[0]);
-        //printf("\nstack.b 1 - - %d\n", stack.b[1]);
         sb_instruction(stack);
-    }
     if (stack.a[0] > stack.a[1] && stack.b[1] > stack.b[0])
-    {
-        //printf("\nstack 0--%d\n", stack.a[0]);
-        //printf("\nstack 1--%d\n", stack.a[1]);
         sa_instruction(stack);
-    }
     if (stack.b[*stack.len_b] > stack.b[0] && stack.a[*stack.len_a] > stack.a[0])
         rb_instruction(stack, len2);
     if (stack.b[*stack.len_b] < stack.b[0] && stack.a[*stack.len_a] < stack.a[0])
@@ -65,41 +55,22 @@ int ft_execute_sort(t_data stack)
 
     len2 = *stack.len_a;
     i = 0;
-    while(ft_check_sort(stack) && i <= len2)
+    while(ft_check_sort(stack) && i < *stack.len_a * 2)
     {
-        //printf("sasasasas");
-       // break ;
-        
+        //ft_generate_instructions(stack, len2);
         while (*stack.len_a >= 1)
         {
             if (*stack.len_b >= 1)
-            {
                 ft_stack_b(stack, len2);
-            }
             if (stack.a[0] > stack.a[*stack.len_a])
                 rra_instruction(stack, len2);
             if (stack.a[0] > stack.a[*stack.len_a])
                 ra_instruction(stack, len2);
             if (stack.a[0] > stack.a[1])
                 sa_instruction(stack);
-            //printf("\nlen b == - - %d\n", *stack.len_b);
-            if (ft_check_sort(stack) == 0 && *stack.len_b > 0 && ft_check_sort_b(stack) == 0)
-            {
-                //printf("\nstack.a - - %d\n", stack.a[0]);
-                //printf("\nlen b == - - %d\n", *stack.len_b);
-                while (*stack.len_b > 0)
-                {
-                    //printf("\nlen b == - - %d\n", *stack.len_b);
-                    pa_instruction(stack);
-                    //*stack.len_b = *stack.len_b - 1; 
-                }
-                //break ;
-            }
+            //ft_pa_instruction(stack);
             if (ft_check_sort(stack) == 1)
-            {
-                //write(1,"dddddd\n",6);
                 pb_instruction(stack);
-            }
             if (ft_check_sort(stack) == 0)
                 break ;
         }

@@ -52,4 +52,5 @@ void         rrr_instruction(t_data stack, int len2);
 void         ra_instruction(t_data stack,int len2);
 void         rb_instruction(t_data stack,int len2);
 void         rr_instruction(t_data stack, int len2);
+int     ft_check_sort_b(t_data stack);
 #endif

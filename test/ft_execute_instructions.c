@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/27 12:17:16 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/28 16:21:32 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	pa_instruction(t_data stack)
 			b++;
 		}
 	}
+	stack.b[b+1] = 0;
 	ft_success("pa\n");
 }
 

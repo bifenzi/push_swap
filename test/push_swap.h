@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/21 17:32:28 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:34:33 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_data
     char    *inst;
     int     *len_a;
     int     *len_b;
+    int     *max_len;
 }           t_data;
 void    ft_stack_b(t_data stack, int len2);
 int     ft_check_sort_b(t_data stack);
@@ -69,4 +70,6 @@ void         rrr_instruction(t_data stack, int len2);
 void         ra_instruction(t_data stack,int len2);
 void         rb_instruction(t_data stack,int len2);
 void         rr_instruction(t_data stack, int len2);
+void	    ft_pa_instruction(t_data  stack);
+void        ft_generate_instructions(t_data stack, int len2);
 #endif
