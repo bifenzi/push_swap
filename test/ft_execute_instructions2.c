@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/28 17:36:07 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/05/01 15:04:57 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,23 @@ void    rrb_instruction(t_data stack, int len2)
 	ft_success("rrb\n");
 }
 
-// void	ft_pa_instruction(t_data  stack)
-// {
-// 	// if (ft_check_sort(stack) == 0 && *stack.len_b > 0 && ft_check_sort_b(stack) == 1)
-// 	// 	ft_stack_b(stack, len2);
-// 	if (ft_check_sort(stack) == 0 && *stack.len_b > 0 && ft_check_sort_b(stack) == 0)
-//             {
-				
-//                 while (*stack.len_b > 0)
-// 				{
-//                     pa_instruction(stack);
-// 					if (stack.a[0] > stack.a[1])
-//                     	sa_instruction(stack);
-// 				}
-//             }
+void	ft_pa_instruction(t_data  stack, int len2)
+{
+	 if (*stack.len_b > 0 && ft_check_sort_b(stack) == 1)
+		ft_stack_b(stack, len2);
+	
+	if (ft_check_sort(stack) == 0 && *stack.len_b > 0 && ft_check_sort_b(stack) == 0)
+    {
+		//printf("SSSSS");
+        while (*stack.len_b > 0)
+		{
+            pa_instruction(stack);
+			if (stack.a[0] > stack.a[1])
+                sa_instruction(stack);
+		}
+    }
 			
-// }
+}
 
 void ft_generate_instructions(t_data stack, int len2)
 {

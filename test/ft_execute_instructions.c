@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/28 16:21:32 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/05/01 14:48:16 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ss_instruction(t_data stack)
 	//if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
 		sb_instruction(stack);
 	//ft_success("ss\n");
-	ft_success("ss");
+	ft_success("ss\n");
 }
 
 void	rrr_instruction(t_data stack, int len2)
@@ -83,7 +83,7 @@ void	rrr_instruction(t_data stack, int len2)
 	len2 = *stack.len_b;
 	//if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
 	rrb_instruction(stack, len2);
-	ft_success("rrr");
+	ft_success("rrr\n");
 }
 
 void   rr_instruction(t_data stack, int len2)
