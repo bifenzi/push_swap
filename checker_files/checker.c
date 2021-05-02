@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:00:41 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/20 13:52:41 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/05/02 13:49:28 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int main(int argc, char **argv)
     ft_read_instructions(stack);
     ft_check_sort(stack);
     ft_free(stack);
-    while(1);
     return(0);
 }

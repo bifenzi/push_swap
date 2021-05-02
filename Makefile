@@ -1,37 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/19 16:48:06 by mbifenzi          #+#    #+#              #
-#    Updated: 2021/04/19 16:52:48 by mbifenzi         ###   ########.fr        #
+#    Created: 2021/05/02 15:22:43 by mbifenzi          #+#    #+#              #
+#    Updated: 2021/05/02 15:32:51 by mbifenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ../checker/*.c *.c 
-
-OBJECT = *.o
-
-NAME = push_swap.a
-
-all : $(NAME)
-
-$(NAME) :
-	@gcc -Wall -Wextra -Werror -c $(SRC)
-	@ar rc $(NAME) $(OBJECT)
-	@ranlib $(NAME)
-	@gcc push_swap.c $(NAME) -g #-fsanitize=address
-
-bonus :
-	@echo "hello world"
-
+all :
+	cd checker_files ; make
+	cd push_swap_files ; make
 clean :
-	@rm -rf *.o
+	cd checker_files ; make clean
+	cd push_swap_files ; make clean
 
-fclean : clean
-	@rm -rf $(NAME)
+fclean : 
+	cd checker_files ; make fclean
+	cd push_swap_files ; make fclean
 
-re : fclean all
-
+re:
+	cd checker_files ; make re
+	cd push_swap_files ; make re
