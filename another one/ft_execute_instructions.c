@@ -6,13 +6,13 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/05/02 12:29:29 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/28 17:36:27 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa_instruction(t_data stack)
+void	pa_instruction(t_data stack,t_sort the)
 {
 	int	b;
 	int	len_a;
@@ -29,24 +29,24 @@ void	pa_instruction(t_data stack)
 		}
 		stack.a[0] = stack.b[0];
 		*stack.len_b = *stack.len_b - 1;
-		while (b < *stack.len_b)
+		while (b <= *stack.len_b)
 		{
 			stack.b[b] = stack.b[b + 1];
 			b++;
 		}
 	}
-	stack.b[b+1] = 0;
+	stack.b[b + 1] = 0;
+	ft_9elleb(stack,the);
 	ft_success("pa\n");
 }
 
-void	pb_instruction(t_data stack)
+int	pb_instruction(t_data stack, t_sort the)
 {
 	int	a;
-	int len2;
 	a = 0;
+	int len2;
 	if (*stack.len_a)
 	{
-
 		len2 = *stack.len_b;
 		while (len2 > 0)
 		{
@@ -63,39 +63,34 @@ void	pb_instruction(t_data stack)
 		*stack.len_b = *stack.len_b + 1;
 	}
 	ft_success("pb\n");
+	ft_9elleb(stack,the);
+	return len2;
 }
 
-void	ss_instruction(t_data stack)
+
+void	ss_instruction(t_data stack, t_sort the)
 {
-	int i;
-	i = 1;
-	//if(ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "ss") == 0)
-		sa_instruction(stack, i);
-	//if(ft_strcmp(stack.inst, "sb") == 0 || ft_strcmp(stack.inst, "ss") == 0)
-		sb_instruction(stack, i);
-	//ft_success("ss\n");
+	int l = 1;
+	sa_instruction(stack,l,the);
+	sb_instruction(stack,l,the);
+	ft_9elleb(stack,the);
 	ft_success("ss\n");
 }
 
-void	rrr_instruction(t_data stack, int len2)
-{
-	int j;
-	j = 1;
-	len2 = *stack.len_a;
-	//if(ft_strcmp(stack.inst, "rra") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-	rra_instruction(stack, len2, j);
-	len2 = *stack.len_b;
-	//if(ft_strcmp(stack.inst, "rrb") == 0 || ft_strcmp(stack.inst, "rrr") == 0)
-	rrb_instruction(stack, len2, j);
-	ft_success("rrr\n");
-}
-
-void   rr_instruction(t_data stack, int len2)
+void	rrr_instruction(t_data stack, t_sort the)
 {
 	int k = 1;
-	//if(ft_strcmp(stack.inst, "ra") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-		ra_instruction(stack, len2, k);
-	//if(ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-		rb_instruction(stack, len2, k);
-		ft_success("rr");
+	rra_instruction(stack, k,the);
+	rrb_instruction(stack, k, the);
+	ft_success("rrr\n");
+	ft_9elleb(stack,the);
+}
+
+void   rr_instruction(t_data stack,t_sort the)
+{
+	int j = 1;
+		ra_instruction(stack, j,the);
+		rb_instruction(stack, j,the);
+		ft_9elleb(stack,the);
+		ft_success("rr\n");
 }

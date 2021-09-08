@@ -6,7 +6,7 @@
 #    By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/19 16:48:06 by mbifenzi          #+#    #+#              #
-#    Updated: 2021/05/02 15:35:22 by mbifenzi         ###   ########.fr        #
+#    Updated: 2021/04/21 14:53:38 by mbifenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ NAME = push_swap.a
 all : $(NAME)
 
 $(NAME) :
-	@gcc -Wall -Wextra -Werror -c $(SRC)
+	@gcc -Wall -Wextra -Werror -c -g $(SRC)
 	@ar rc $(NAME) $(OBJECT)
 	@ranlib $(NAME)
-	@gcc -o ../push_swap push_swap.c $(NAME)  #-fsanitize=address
+	@gcc push_swap.c $(NAME) -g -fsanitize=address
 
 bonus :
 	@echo "hello world"

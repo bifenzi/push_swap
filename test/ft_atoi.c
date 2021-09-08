@@ -6,11 +6,11 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:42:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/12 14:35:49 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/24 17:29:18 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 long		ft_atoi(const char *str)
 {

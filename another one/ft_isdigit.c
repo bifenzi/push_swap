@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 18:13:42 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/02 17:27:46 by mbifenzi         ###   ########.fr       */
+/*   Created: 2019/10/15 19:39:27 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/06/24 17:29:42 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-
-int		ft_strcmp(const char *s1, const char *s2)
+#include "push_swap.h"
+int		ft_isdigit(char c)
 {
-	size_t j;
-	size_t i;
-
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0' && s2[j] != '\0' &&
-			((unsigned char *)s1)[i] == ((unsigned char *)s2)[j])
+	if (c >= '0' && c <= '9')
 	{
-		i++;
-		j++;
+		return (1);
 	}
-	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[j]);
+	return (0);
 }

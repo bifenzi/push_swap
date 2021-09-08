@@ -11,34 +11,35 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    sa_instruction(t_data stack, int i)
+void    sa_instruction(t_data stack, int l, t_sort the)
 {
     int tmp;
     
     tmp = stack.a[0];
 		stack.a[0] = stack.a[1];
 		stack.a[1] = tmp;
-	if (i != 1)
+	if(l == 0)
 		ft_success("sa\n");
+	ft_9elleb(stack,the);
 }
 
-void    sb_instruction(t_data stack, int i)
+void    sb_instruction(t_data stack, int l, t_sort the)
 {
     int tmp;
     
     tmp = stack.b[0];
 		stack.b[0] = stack.b[1];
 		stack.b[1] = tmp;
-	if (i != 1)
+	if(l == 0)
 		ft_success("sb\n");
+	ft_9elleb(stack,the);
 }
 
-int	ft_read_instructions(t_data stack)
+int	ft_read_instructions(t_data stack, t_sort the)
 {
 	while (get_next_line(0, &stack.inst) > 0)
 	{
-		ft_instructions(stack);
+		ft_instructions(stack, the);
 		free(stack.inst);
 		stack.inst = NULL;
 	}
@@ -47,27 +48,25 @@ int	ft_read_instructions(t_data stack)
 	return (1);
 }
 
-int	ft_instructions(t_data stack)
+int	ft_instructions(t_data stack, t_sort the)
 {
 	int	i;
-	int	len2;
 
-	len2 = *stack.len_a;
 	i = 0;
 	if (ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "sb") == 0
 		||ft_strcmp(stack.inst, "ss") == 0)
-		ss_instruction(stack);
+		ss_instruction(stack, the);
 	else if (ft_strcmp(stack.inst, "pa") == 0)
-		pa_instruction(stack);
+		pa_instruction(stack, the);
 	else if (ft_strcmp(stack.inst, "pb") == 0)
-		pb_instruction(stack);
+		pb_instruction(stack, the);
 	else if (ft_strcmp(stack.inst, "ra") == 0
 		|| ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-		rr_instruction(stack, len2);
+		rr_instruction(stack, the);
 	else if (ft_strcmp(stack.inst, "rra") == 0
 		|| ft_strcmp(stack.inst, "rrb") == 0
 		|| ft_strcmp(stack.inst, "rrr") == 0)
-		rrr_instruction(stack, len2);
+		rrr_instruction(stack, the);
 	else if (ft_strcmp(stack.inst, "\n") == 0 || ft_strcmp(stack.inst, "\0") == 0)
 		printf("success");
 	else

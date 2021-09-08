@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 17:06:29 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:47:46 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,22 @@ int     ft_error(char *error)
         write(1, &error[i], 1);
         i++;
     }
+    exit(0);
     return(1);
-    //exit(0);
     
 }
 
 
-int ft_free(t_data stack)
+int ft_free(t_data stack, t_sort the)
 {
+    free(the.moyenne);
     free(stack.a);
     free(stack.b);
     free(stack.len_a);
     free(stack.len_b);
+    free(the.first);
+    free(the.one);
+
     stack.a = NULL;
     stack.b = NULL;
     stack.len_a = NULL;

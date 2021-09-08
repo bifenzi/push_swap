@@ -6,12 +6,11 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:13:42 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/02 17:27:46 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/24 17:29:46 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-
+#include "push_swap.h"
 int		ft_strcmp(const char *s1, const char *s2)
 {
 	size_t j;

@@ -10,26 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-
-void    sa_instruction(t_data stack)
+#include "push_swap.h"
+void    sa_instruction(t_data stack, int l)
 {
     int tmp;
     
     tmp = stack.a[0];
 		stack.a[0] = stack.a[1];
 		stack.a[1] = tmp;
-	ft_success("sa\n");
+	if(l == 0)
+		ft_success("sa\n");
 }
 
-void    sb_instruction(t_data stack)
+void    sb_instruction(t_data stack, int l)
 {
     int tmp;
     
     tmp = stack.b[0];
 		stack.b[0] = stack.b[1];
 		stack.b[1] = tmp;
-	ft_success("sb\n");
+	if(l == 0)
+		ft_success("sb\n");
 }
 
 int	ft_read_instructions(t_data stack)
@@ -45,7 +46,7 @@ int	ft_read_instructions(t_data stack)
 	return (1);
 }
 
-int	ft_instructions(t_data stack)
+/*int	ft_instructions(t_data stack)
 {
 	int	i;
 	int	len2;
@@ -73,4 +74,4 @@ int	ft_instructions(t_data stack)
 	i++;
 	return (1);
 }
-
+*/

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/19 17:06:29 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/21 21:11:03 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int     ft_error(char *error)
         write(1, &error[i], 1);
         i++;
     }
+    exit(0);
     return(1);
-    //exit(0);
     
 }
 

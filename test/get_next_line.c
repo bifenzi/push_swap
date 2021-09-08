@@ -6,11 +6,11 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 19:12:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/03 15:41:48 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/24 17:30:08 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int		ft_finish(char **str, char **line)
 {

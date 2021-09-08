@@ -6,12 +6,13 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/05/02 15:46:46 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/07/01 17:53:24 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
+int INT32_MIN = 2147483647;
+int INT32_MAX = -2147483647;
 void    ft_check_numbers(char **argv)
 {
     int i;
@@ -31,8 +32,11 @@ void    ft_check_numbers(char **argv)
             j++;
         }
         a = ft_atoi(argv[i]);
-        if (a > INT32_MAX || a < INT32_MIN)
-            ft_error("NOT INTEGER");
+        a = ft_atoi(argv[i]);
+        if (a > 2147483647 || a < -2147483647)
+        {
+            ft_error("NOT INTEGER\n");
+        }
         i++;
     }
 }

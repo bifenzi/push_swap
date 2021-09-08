@@ -6,17 +6,16 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/20 17:28:11 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/06/24 17:29:29 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-
+#include "push_swap.h"
 void    ft_check_numbers(char **argv)
 {
     int i;
     int j;
-    long a;
+    int a;
 
     i = 1;
     while (argv[i])
@@ -27,12 +26,14 @@ void    ft_check_numbers(char **argv)
         while (argv[i][j])
         {
             if(!ft_isdigit((argv[i][j])))
-                ft_error("NOT INTEGER");
+                ft_error("NOT INTEGER\n");
             j++;
         }
         a = ft_atoi(argv[i]);
-        if (a > INT32_MAX || a < INT32_MIN)
-            ft_error("NOT INTEGER");
+        if (a > 2147483647 || a < -2147483647)
+        {
+            ft_error("NOT INTEGER\n");
+        }
         i++;
     }
 }
