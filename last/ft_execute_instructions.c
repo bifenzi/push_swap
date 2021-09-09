@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/08 15:29:15 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/09 18:56:19 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	pa_instruction(t_data stack,t_sort the)
 		}
 	}
 	stack.b[b + 1] = 0;
-	ft_9elleb(stack,the);
 	ft_success("pa\n");
 }
 
@@ -64,7 +63,6 @@ int	pb_instruction(t_data stack, t_sort the)
 		*stack.len_b = *stack.len_b + 1;
 	}
 	ft_success("pb\n");
-	ft_9elleb(stack,the);
 	return len2;
 }
 
@@ -74,7 +72,6 @@ void	ss_instruction(t_data stack, t_sort the)
 	int l = 1;
 	sa_instruction(stack,l,the);
 	sb_instruction(stack,l,the);
-	ft_9elleb(stack,the);
 	ft_success("ss\n");
 }
 
@@ -84,7 +81,6 @@ void	rrr_instruction(t_data stack, t_sort the)
 	rra_instruction(stack, k,the);
 	rrb_instruction(stack, k, the);
 	ft_success("rrr\n");
-	ft_9elleb(stack,the);
 }
 
 void   rr_instruction(t_data stack,t_sort the)
@@ -92,6 +88,5 @@ void   rr_instruction(t_data stack,t_sort the)
 	int j = 1;
 		ra_instruction(stack, j,the);
 		rb_instruction(stack, j,the);
-		ft_9elleb(stack,the);
 		ft_success("rr\n");
 }

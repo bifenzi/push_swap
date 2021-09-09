@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/07/01 17:41:22 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:18:45 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,23 +90,10 @@ int     main(int argc, char **argv)
     stack.len_b = malloc(sizeof(int));
     *stack.len_a = argc - 2;
     *stack.len_b = 0;
-    *the.moyenne = (argc - 2) / 2;
-    //ft_allocate(stack, the, argc);
-    //printf("===> %s\n", argv[0]);
-    // if (ft_strcmp(argv[1]," $ARG") == 0)
-    // {
-    //     printf("ssssss\n");
-    //     stack.a = malloc(sizeof(int) * (ft_strlen(argv[0]) - 4));
-    //     stack.b = malloc(sizeof(int) * (ft_strlen(argv[0]) - 4));
-    //     ft_args(stack, argv); 
-    // }
-    // else
-    // {
-            
-        stack.a = malloc(sizeof(int) * (argc));
-        stack.b = malloc(sizeof(int) *  (argc));
-        ft_read_arguments(stack, argv);
-   // }
+    *the.moyenne = (argc - 2) / 2;    
+    stack.a = malloc(sizeof(int) * (argc));
+    stack.b = malloc(sizeof(int) *  (argc));
+    ft_read_arguments(stack, argv);
     ft_check_numbers(argv);
     ft_check_duplicate(stack);
     ft_execute_sort(stack,the);

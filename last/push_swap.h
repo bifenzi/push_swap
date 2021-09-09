@@ -1,0 +1,103 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/09/09 18:57:29 by mbifenzi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+
+typedef struct	s_data
+{
+	int     *a;
+    int     *b;
+    char    *inst;
+    int     *len_a;
+    int     *len_b;
+    int     *max_len;
+}           t_data;
+
+typedef struct	s_sort
+{
+	int     *index;
+    int     *moyenne;
+    
+}           t_sort;
+int    ft_stack_b(t_data stack, t_sort the);
+int    ft_stack_a(t_data stack, int len2, t_sort the);
+int    ft_check_sort_b(t_data stack);
+int    ft_finish_him(t_data stack, int len2);
+//int  ft_execute_sort(t_data stack)
+
+/*gnl functions*/
+int		    ft_finish(char **str, char **line);
+int		    ft_remplissage(char **str, char **line, int len);
+int		    ft_read(int fd, char **str);
+int		    get_next_line(int fd, char **line);
+char	    *ft_strdup(const char *s);
+char	    *ft_substr(char const *s, unsigned int start, size_t len);
+char	    *ft_strjoin(char const *s1, char const *s2);
+char	    *ft_strchr(const char *s, int c);
+/*checker*/
+long		ft_atoi(const char *str);
+int         ft_error(char *error);
+int         ft_success(char *success);
+size_t	    ft_strlen(const char *str);
+int		    ft_strcmp(const char *s1, const char *s2);
+//void        ft_allocate(t_data stack, t_sort the, int argc);
+void        ft_args(t_data stack, char **argv);
+int         ft_read_instructions(t_data stack, t_sort the);
+int         ft_instructions(t_data stack, t_sort the);         
+int         ft_free(t_data stack,t_sort the);
+int		    ft_isdigit(char c);
+void        ft_check_numbers(char **argv);
+void        ft_check_duplicate(t_data stack);
+int         ft_check_sort(t_data stack);
+int         ft_read_arguments(t_data stack, char **argv);
+
+/*instructions*/
+void         pa_instruction(t_data stack, t_sort the);
+int          pb_instruction(t_data stack, t_sort the);
+
+void         sa_instruction(t_data stack, int l, t_sort the);
+void         sb_instruction(t_data stack, int l, t_sort the);
+void         ss_instruction(t_data stack,t_sort the);
+void         rra_instruction(t_data stack, int k, t_sort the);
+void         rrb_instruction(t_data stack, int k, t_sort the);
+void         rrr_instruction(t_data stack,  t_sort the);
+void         ra_instruction(t_data stack, int j, t_sort the);
+void         rb_instruction(t_data stack, int j, t_sort the);
+void         rr_instruction(t_data stack, t_sort the);
+void	     ft_pa_instruction(t_data  stack, int len2, t_sort the);
+void         ft_generate_instructions(t_data stack, int len2, t_sort the);
+//
+void ft_sort_first(t_data stack, t_sort the);
+void ft_sort_second(t_data stack, t_sort the);
+void ft_sort_third(t_data stack, t_sort the);
+void ft_9elleb(t_data stack, t_sort the);
+void ft_9elleb_b(t_data stack, t_sort the);
+void ft_sort_second_b(t_data stack, t_sort the);
+void ft_sort_first_b(t_data stack, t_sort the);
+// split
+// static int		ft_hm(char const *s, char c);
+// static char		**ft_mal(char **strs, char const *s, char c);
+// static char		**ft_cpy(char **strs, char const *s, char c);
+// char			**ft_split(char const *s, char c);
+
+
+
+#endif
