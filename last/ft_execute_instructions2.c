@@ -6,13 +6,13 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/09 18:56:35 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/11 17:12:33 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra_instruction(t_data stack, int j, t_sort the)
+void	ra_instruction(t_data stack, int j)
 {
 	
 	int tmp;
@@ -30,7 +30,7 @@ void	ra_instruction(t_data stack, int j, t_sort the)
 		ft_success("ra\n");
 }
 
-void	rb_instruction(t_data stack, int j, t_sort the)
+void	rb_instruction(t_data stack, int j)
 {
 	int tmp;
 	int i;
@@ -46,7 +46,7 @@ void	rb_instruction(t_data stack, int j, t_sort the)
 		ft_success("rb\n");
 }
 
-void    rra_instruction(t_data stack, int k, t_sort the)
+void    rra_instruction(t_data stack, int k)
 {
     int tmp;
     int len2 = *stack.len_a;
@@ -62,7 +62,7 @@ void    rra_instruction(t_data stack, int k, t_sort the)
 		ft_success("rra\n");
 }
 
-void    rrb_instruction(t_data stack, int k, t_sort the)
+void    rrb_instruction(t_data stack, int k)
 {
     int tmp;
     int len2 = *stack.len_b - 1;

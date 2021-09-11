@@ -6,13 +6,13 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/09 18:56:19 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/11 17:11:05 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa_instruction(t_data stack,t_sort the)
+void	pa_instruction(t_data stack)
 {
 	int	b;
 	int	len_a;
@@ -39,7 +39,7 @@ void	pa_instruction(t_data stack,t_sort the)
 	ft_success("pa\n");
 }
 
-int	pb_instruction(t_data stack, t_sort the)
+int	pb_instruction(t_data stack)
 {
 	int	a;
 	a = 0;
@@ -67,26 +67,26 @@ int	pb_instruction(t_data stack, t_sort the)
 }
 
 
-void	ss_instruction(t_data stack, t_sort the)
+void	ss_instruction(t_data stack)
 {
 	int l = 1;
-	sa_instruction(stack,l,the);
-	sb_instruction(stack,l,the);
+	sa_instruction(stack,l);
+	sb_instruction(stack,l);
 	ft_success("ss\n");
 }
 
-void	rrr_instruction(t_data stack, t_sort the)
+void	rrr_instruction(t_data stack)
 {
 	int k = 1;
-	rra_instruction(stack, k,the);
-	rrb_instruction(stack, k, the);
+	rra_instruction(stack, k);
+	rrb_instruction(stack, k);
 	ft_success("rrr\n");
 }
 
-void   rr_instruction(t_data stack,t_sort the)
+void   rr_instruction(t_data stack)
 {
 	int j = 1;
-		ra_instruction(stack, j,the);
-		rb_instruction(stack, j,the);
+		ra_instruction(stack, j);
+		rb_instruction(stack, j);
 		ft_success("rr\n");
 }

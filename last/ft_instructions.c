@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void    sa_instruction(t_data stack, int l, t_sort the)
+void    sa_instruction(t_data stack, int l)
 {
     int tmp;
     
@@ -22,7 +22,7 @@ void    sa_instruction(t_data stack, int l, t_sort the)
 		ft_success("sa\n");
 }
 
-void    sb_instruction(t_data stack, int l, t_sort the)
+void    sb_instruction(t_data stack, int l)
 {
     int tmp;
     
@@ -33,11 +33,11 @@ void    sb_instruction(t_data stack, int l, t_sort the)
 		ft_success("sb\n");
 }
 
-int	ft_read_instructions(t_data stack, t_sort the)
+int	ft_read_instructions(t_data stack)
 {
 	while (get_next_line(0, &stack.inst) > 0)
 	{
-		ft_instructions(stack, the);
+		ft_instructions(stack);
 		free(stack.inst);
 		stack.inst = NULL;
 	}
@@ -46,25 +46,25 @@ int	ft_read_instructions(t_data stack, t_sort the)
 	return (1);
 }
 
-int	ft_instructions(t_data stack, t_sort the)
+int	ft_instructions(t_data stack)
 {
 	int	i;
 
 	i = 0;
 	if (ft_strcmp(stack.inst, "sa") == 0 || ft_strcmp(stack.inst, "sb") == 0
 		||ft_strcmp(stack.inst, "ss") == 0)
-		ss_instruction(stack, the);
+		ss_instruction(stack);
 	else if (ft_strcmp(stack.inst, "pa") == 0)
-		pa_instruction(stack, the);
+		pa_instruction(stack);
 	else if (ft_strcmp(stack.inst, "pb") == 0)
-		pb_instruction(stack, the);
+		pb_instruction(stack);
 	else if (ft_strcmp(stack.inst, "ra") == 0
 		|| ft_strcmp(stack.inst, "rb") == 0 || ft_strcmp(stack.inst, "rr") == 0)
-		rr_instruction(stack, the);
+		rr_instruction(stack);
 	else if (ft_strcmp(stack.inst, "rra") == 0
 		|| ft_strcmp(stack.inst, "rrb") == 0
 		|| ft_strcmp(stack.inst, "rrr") == 0)
-		rrr_instruction(stack, the);
+		rrr_instruction(stack);
 	else if (ft_strcmp(stack.inst, "\n") == 0 || ft_strcmp(stack.inst, "\0") == 0)
 		printf("success");
 	else

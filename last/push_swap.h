@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/09 18:57:29 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:48:34 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,8 @@ typedef struct	s_data
     int     *max_len;
 }           t_data;
 
-typedef struct	s_sort
-{
-	int     *index;
-    int     *moyenne;
-    
-}           t_sort;
-int    ft_stack_b(t_data stack, t_sort the);
-int    ft_stack_a(t_data stack, int len2, t_sort the);
+int    ft_stack_b(t_data stack);
+int    ft_stack_a(t_data stack, int len2);
 int    ft_check_sort_b(t_data stack);
 int    ft_finish_him(t_data stack, int len2);
 //int  ft_execute_sort(t_data stack)
@@ -58,46 +52,40 @@ int         ft_error(char *error);
 int         ft_success(char *success);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
-//void        ft_allocate(t_data stack, t_sort the, int argc);
+//void        ft_allocate(t_data stack, , int argc);
 void        ft_args(t_data stack, char **argv);
-int         ft_read_instructions(t_data stack, t_sort the);
-int         ft_instructions(t_data stack, t_sort the);         
-int         ft_free(t_data stack,t_sort the);
+int         ft_read_instructions(t_data stack);
+int         ft_instructions(t_data stack);         
+int         ft_free(t_data stack);
 int		    ft_isdigit(char c);
 void        ft_check_numbers(char **argv);
 void        ft_check_duplicate(t_data stack);
 int         ft_check_sort(t_data stack);
-int         ft_read_arguments(t_data stack, char **argv);
+int         *ft_read_arguments(t_data stack, int *a, char **argv);
 
 /*instructions*/
-void         pa_instruction(t_data stack, t_sort the);
-int          pb_instruction(t_data stack, t_sort the);
+void         pa_instruction(t_data stack);
+int          pb_instruction(t_data stack);
 
-void         sa_instruction(t_data stack, int l, t_sort the);
-void         sb_instruction(t_data stack, int l, t_sort the);
-void         ss_instruction(t_data stack,t_sort the);
-void         rra_instruction(t_data stack, int k, t_sort the);
-void         rrb_instruction(t_data stack, int k, t_sort the);
-void         rrr_instruction(t_data stack,  t_sort the);
-void         ra_instruction(t_data stack, int j, t_sort the);
-void         rb_instruction(t_data stack, int j, t_sort the);
-void         rr_instruction(t_data stack, t_sort the);
-void	     ft_pa_instruction(t_data  stack, int len2, t_sort the);
-void         ft_generate_instructions(t_data stack, int len2, t_sort the);
+void         sa_instruction(t_data stack, int l);
+void         sb_instruction(t_data stack, int l);
+void         ss_instruction(t_data stack);
+void         rra_instruction(t_data stack, int k);
+void         rrb_instruction(t_data stack, int k);
+void         rrr_instruction(t_data stack);
+void         ra_instruction(t_data stack, int j);
+void         rb_instruction(t_data stack, int j);
+void         rr_instruction(t_data stack);
+void	     ft_pa_instruction(t_data  stack, int len2);
+void         ft_generate_instructions(t_data stack, int len );
 //
-void ft_sort_first(t_data stack, t_sort the);
-void ft_sort_second(t_data stack, t_sort the);
-void ft_sort_third(t_data stack, t_sort the);
-void ft_9elleb(t_data stack, t_sort the);
-void ft_9elleb_b(t_data stack, t_sort the);
-void ft_sort_second_b(t_data stack, t_sort the);
-void ft_sort_first_b(t_data stack, t_sort the);
+
 // split
 // static int		ft_hm(char const *s, char c);
 // static char		**ft_mal(char **strs, char const *s, char c);
 // static char		**ft_cpy(char **strs, char const *s, char c);
 // char			**ft_split(char const *s, char c);
 
-
+int *ft_sort_table(int *a);
 
 #endif

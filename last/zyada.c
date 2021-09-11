@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/08 18:38:30 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:47:53 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,12 @@ int     ft_error(char *error)
 }
 
 
-int ft_free(t_data stack, t_sort the)
+int ft_free(t_data stack)
 {
-    free(the.moyenne);
     free(stack.a);
     free(stack.b);
     free(stack.len_a);
     free(stack.len_b);
-    free(the.first);
-    free(the.one);
 
     stack.a = NULL;
     stack.b = NULL;
@@ -64,7 +61,7 @@ int ft_free(t_data stack, t_sort the)
     return(1);
 }
 
-int         ft_read_arguments(t_data stack, char **argv)
+int         *ft_read_arguments(t_data stack, int *a, char **argv)
 {
     int j;
 
@@ -72,8 +69,10 @@ int         ft_read_arguments(t_data stack, char **argv)
     while (argv[j + 1])
     {
         stack.a[j] = ft_atoi(argv[j + 1]);
+        a[j] = stack.a[j];
         j++;
     }
     stack.a[j] = '\0';
-    return(0);
+    a[j] = stack.a[j];
+    return(a);
 }
