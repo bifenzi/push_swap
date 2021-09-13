@@ -6,13 +6,12 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/07/01 17:53:24 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:05:21 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-int INT32_MIN = 2147483647;
-int INT32_MAX = -2147483647;
+
 void    ft_check_numbers(char **argv)
 {
     int i;

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/11 18:47:53 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/12 15:23:10 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ int     ft_error(char *error)
 }
 
 
-int ft_free(t_data stack)
+int ft_free(t_data stack, int *sorted)
 {
     free(stack.a);
     free(stack.b);
     free(stack.len_a);
     free(stack.len_b);
+    free(sorted);
 
     stack.a = NULL;
     stack.b = NULL;
