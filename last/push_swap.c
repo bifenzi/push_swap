@@ -6,12 +6,27 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/13 17:54:24 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/14 19:24:24 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+int     ft_check_pos(t_data stack, int *sorted)
+{
+    int pos;
+    int i = 0;
+    int j = 0;
+   
+    while (sorted[i])
+    {
+        if (stack.a[0] == sorted[i])
+        {
+               return (i);
+        }
+        i++;
+    }
+    return(0);
+}
 int *ft_sort_table(int *a)
 {
     int i;
@@ -36,93 +51,47 @@ int *ft_sort_table(int *a)
     }
     return a;
 }
-int     ft_check_pos(t_data stack, int *sorted)
-{
-    int pos;
-    int i = 0;
-    int j = 0;
-   
-    while (sorted[i])
-    {
-        if (stack.a[0] == sorted[i])
-        {
-               return (i);
-        }
-        i++;
-    }
-    return(0);
-}
-int     ft_smallest_b(t_data stack)
-{
-    int i;
-    int j;
-    int min;
-    
-    i = 0;
-    j = 0;
-    min = 0;
-    while (i <= *stack.len_b - 1)
-    {
-        if (stack.b[i] < stack.b[min])
-           min = i ;
-        i++;
-    }
-    //printf("%d\n",min);
-    return(min);
-}
-int         ft_min_b(t_data stack)
-{
-    int moyenne;
-    int min;
-    int i = 0;
-    int j;
 
-    j = 0;
-    int k = 0;
-    min = -1;
-    moyenne = *stack.len_b/2;
-    int *b = malloc((*stack.len_b + 1) * sizeof(int));
-    while (i <= *stack.len_b - 1)
-    {
-
-        k = 0;
-        while (k <= *stack.len_a)
-        {
-            if (stack.a[k] < stack.b[i])
-                k++;
-        }
-        if (i > moyenne)
-            b[i] = *stack.len_b - i  +k;
-        else
-            b[i] = i + k;
-        i++;
-    }
-    b = ft_sort_table(b);
-    i = b[0];
-    free(b);
-    return i;
-}
-int     ft_apply_pa(t_data stack, int min)
+int     ft_check_placements(t_data stack)
 {
     int i = 0;
-    int j = 0;
-    if (stack.b[min] > stack.a[i])
+    int index_b;
+    int index_a;
+    int inst_a;
+    int inst_b;
+    int shortest;
+    int a;
+    int b;
+
+    shortest = -1;
+    while (*stack.len_b - 1 >= 0)
     {
-        while (stack.b[min] > stack.a[i] && i <= *stack.len_a)
+        while (i < *stack.len_b)
         {
+            index_b = i;
+            inst_b = smallest_b_instr(stack, index_b);
+            index_a = smallest_a_index(stack, index_b);
+            inst_a = smallest_a_instr(stack, index_a);
+            if (smallest_b_instr(stack, index_b) == -1)
+                index_b = *stack.len_b - index_b;
+            if (smallest_a_instr(stack, index_a) == -1)
+                index_a = *stack.len_a - index_a;
+            if (shortest != -1 && index_a + index_b < shortest)
+            {
+                shortest = index_a + index_b;
+                a = index_a;
+                b = index_b;
+            }
+                
             i++;
         }
+        
+        b_to_a(stack, a, b, inst_a, inst_b);
+        pa_instruction(stack);
     }
-    else if (stack.b[min] < stack.a[i])
-    {
-        i = 0;
-         while (stack.b[min] < stack.a[i] && i <= *stack.len_a)
-        {
-            i++;
-        }
-    }
-    
+    return 0;
 }
+
 int    ft_execute_sort(t_data stack, int *sorted)
 {
     int h;
@@ -145,8 +114,7 @@ int    ft_execute_sort(t_data stack, int *sorted)
         else
             pb_instruction(stack);
     }
-    min = ft_min_b(stack);
-    ft_apply_pa(stack , min);
+    ft_check_placements(stack);
     return 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/12 15:23:36 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/14 18:32:36 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void         ra_instruction(t_data stack, int j);
 void         rb_instruction(t_data stack, int j);
 void         rr_instruction(t_data stack);
 void	     ft_pa_instruction(t_data  stack, int len2);
-void         ft_generate_instructions(t_data stack, int len );
 //
 
 // split
@@ -85,7 +84,13 @@ void         ft_generate_instructions(t_data stack, int len );
 // static char		**ft_mal(char **strs, char const *s, char c);
 // static char		**ft_cpy(char **strs, char const *s, char c);
 // char			**ft_split(char const *s, char c);
-
-int *ft_sort_table(int *a);
+int    ft_execute_sort(t_data stack, int *sorted);
+int         *ft_sort_table(int *a);
+int         ft_check_placements(t_data stack);
+int     smallest_b_instr(t_data stack, int index_b);
+int     smallest_a_instr(t_data stack, int index_a);
+int     smallest_a_index(t_data stack, int index_b);
+int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b);
+int     ft_check_pos(t_data stack, int *sorted);
 
 #endif
