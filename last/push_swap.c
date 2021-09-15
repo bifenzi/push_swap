@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/14 19:24:24 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/15 18:50:55 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,33 @@ int     ft_check_placements(t_data stack)
     shortest = -1;
     while (*stack.len_b - 1 >= 0)
     {
-        while (i < *stack.len_b)
+        i = 0;
+        while (i <= *stack.len_b - 1)
         {
             index_b = i;
             inst_b = smallest_b_instr(stack, index_b);
             index_a = smallest_a_index(stack, index_b);
             inst_a = smallest_a_instr(stack, index_a);
+            //printf("a %d\n", index_a);
             if (smallest_b_instr(stack, index_b) == -1)
-                index_b = *stack.len_b - index_b;
+                index_b = *stack.len_b - 1 - index_b;
             if (smallest_a_instr(stack, index_a) == -1)
                 index_a = *stack.len_a - index_a;
-            if (shortest != -1 && index_a + index_b < shortest)
+            if (shortest == -1)
             {
                 shortest = index_a + index_b;
                 a = index_a;
                 b = index_b;
             }
-                
+            else if (shortest != -1 && index_a + index_b < shortest)
+            {
+                shortest = index_a + index_b;
+                a = index_a;
+                b = index_b;
+            }
             i++;
+            
         }
-        
         b_to_a(stack, a, b, inst_a, inst_b);
         pa_instruction(stack);
     }
@@ -113,6 +120,12 @@ int    ft_execute_sort(t_data stack, int *sorted)
         }
         else
             pb_instruction(stack);
+        //int j =0;
+       /* while(j < *stack.len_a)
+        {
+            printf("stack a %d\n", stack.a[j]);
+            j++;
+        }*/
     }
     ft_check_placements(stack);
     return 0;

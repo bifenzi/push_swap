@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:30:25 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/14 19:20:17 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/15 19:06:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int     smallest_a_index(t_data stack, int index_b)
         else if (stack.a[i] < stack.b[index_b])
             i++;
     }
-    
     return (i);
 }
 int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
@@ -52,18 +51,19 @@ int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
     j = 0;
     if (inst_b == -1 && inst_a == -1)
     {
-        while (a > 0 && b > 0)
+        while (a >= 0 && b > 0)
         {
             rrr_instruction(stack);
             a--;
             b--;
         }
-        // while (a > 0)
-        // {
-        //     printf("%d\n", *stack.len_b);
-        //     rra_instruction(stack, j);
-        //     a--;
-        // }
+        
+        while (a >= 0)
+        {
+            
+            rra_instruction(stack, j);
+            a--;
+        }
         while (b > 0)
         {
             rrb_instruction(stack, j);
@@ -78,7 +78,7 @@ int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
         a--;
         b--;
         }
-        while (a > 0)
+        while (a >= 0)
         {
             ra_instruction(stack, j);
             a--;
@@ -86,6 +86,32 @@ int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
         while (b > 0)
         {
             rb_instruction(stack, j);
+            b--;
+        }
+    }
+    else if (inst_b == 1 && inst_a == -1)
+    {
+        while (a >= 0)
+        {
+            rra_instruction(stack, j);
+            a--;
+        }
+        while (b > 0)
+        {
+            rb_instruction(stack, j);
+            b--;
+        }
+    }
+    else if (inst_b == -1 && inst_a == 1)
+    {
+        while (a >= 0)
+        {
+            rra_instruction(stack, j);
+            a--;
+        }
+        while (b > 0)
+        {
+            rrb_instruction(stack, j);
             b--;
         }
     }
