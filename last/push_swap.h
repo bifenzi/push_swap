@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/14 18:32:36 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:14:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	     ft_pa_instruction(t_data  stack, int len2);
 // char			**ft_split(char const *s, char c);
 int    ft_execute_sort(t_data stack, int *sorted);
 int         *ft_sort_table(int *a);
-int         ft_check_placements(t_data stack);
+int         ft_check_placements(t_data stack, int *sorted);
 int     smallest_b_instr(t_data stack, int index_b);
 int     smallest_a_instr(t_data stack, int index_a);
 int     smallest_a_index(t_data stack, int index_b);

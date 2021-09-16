@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/15 18:50:55 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:11:25 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int *ft_sort_table(int *a)
     return a;
 }
 
-int     ft_check_placements(t_data stack)
+int     ft_check_placements(t_data stack, int *sorted)
 {
     int i = 0;
     int index_b;
@@ -62,22 +62,27 @@ int     ft_check_placements(t_data stack)
     int shortest;
     int a;
     int b;
+    int k;
 
     shortest = -1;
+      i = 0;
+      
     while (*stack.len_b - 1 >= 0)
     {
         i = 0;
         while (i <= *stack.len_b - 1)
         {
+            if (*stack.len_b - 1 > 0)
+            {
             index_b = i;
+            k = 0;
             inst_b = smallest_b_instr(stack, index_b);
             index_a = smallest_a_index(stack, index_b);
-            inst_a = smallest_a_instr(stack, index_a);
-            //printf("a %d\n", index_a);
+            inst_a = smallest_a_instr(stack, index_a);            
             if (smallest_b_instr(stack, index_b) == -1)
                 index_b = *stack.len_b - 1 - index_b;
             if (smallest_a_instr(stack, index_a) == -1)
-                index_a = *stack.len_a - index_a;
+                    index_a = (*stack.len_a + 1) - index_a;
             if (shortest == -1)
             {
                 shortest = index_a + index_b;
@@ -90,13 +95,54 @@ int     ft_check_placements(t_data stack)
                 a = index_a;
                 b = index_b;
             }
+            }
+            else if (*stack.len_b - 1 == 0)
+            {
+                        
+                index_a = smallest_a_index(stack, index_b);
+                if (smallest_a_instr(stack, index_a) == -1)
+                    a = (*stack.len_a + 1) - index_a;
+                else
+                    a = smallest_a_index(stack, index_b);
+                b = 0;
+            }
             i++;
-            
         }
+        printf("stack b = %d\n", stack.b[0]);
+        printf("stack a = %d\n", stack.a[0]);
+        printf("index a = %d\n", a);
         b_to_a(stack, a, b, inst_a, inst_b);
         pa_instruction(stack);
     }
-    return 0;
+    
+    // i = 0;
+    // int j = 0;
+    //     while(i < *stack.len_a)
+    //     {
+    //         if (stack.a[i] == sorted[0])
+    //             break ;
+    //         i++;
+    //     }
+    //     while (stack.a[0] != sorted[0])
+    //     {
+    //         if ( i >= *stack.len_a/2)
+    //             ra_instruction(stack, j);
+    //         else if ( i <= *stack.len_a/2)
+    //             rra_instruction(stack, j);
+    //     }
+        // i = 0;
+        // while(i <= *stack.len_a)
+        // {
+        //     printf("stack a = %d\n", stack.a[i]);
+        //     i++;
+        // }
+         k = 0;
+        while(k <= *stack.len_a)
+        {
+            printf(" stack a = %d\n",stack.a[k]);
+            k++;
+        }
+     return 0;
 }
 
 int    ft_execute_sort(t_data stack, int *sorted)
@@ -127,7 +173,7 @@ int    ft_execute_sort(t_data stack, int *sorted)
             j++;
         }*/
     }
-    ft_check_placements(stack);
+    ft_check_placements(stack, sorted);
     return 0;
 }
 
