@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:30:25 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/16 18:50:39 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/17 18:21:04 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,41 @@ int     smallest_a_instr(t_data stack, int index_a)
     else
         return (1);
 }
-int     smallest_a_index(t_data stack, int index_b)
+int     dig_num(int *c)
+{
+    int i = 0;
+
+    while (c[i])
+        i++;
+    return i;
+}
+int     smallest_a_index(t_data stack, int index_b, int *sorted)
 {
     int i = 0;
     int ret;
-    int compare;
-
-    ret = 0;
-    while (i <= *stack.len_a)
+    int tmp;
+    tmp = 0;
+    /*while (i < *stack.len_a)
     {
-        if (i == 0 && stack.a[i] - stack.b[index_b] > 0)
-        {
-            compare = stack.a[i] - stack.b[index_b];
-            ret = 0;
-        }
-        else if (i > 0 && stack.a[i] - stack.b[index_b] > 0 && stack.a[i] - stack.b[index_b] < compare )
-        {
-            compare = stack.a[i] - stack.b[index_b];
-            ret = i ;
-        }  
+        if (stack.b[index_b] < stack.a[i] && stack.a[tmp] >= stack.a[i])  
+            tmp = i;
+           
         i++;
-    }
+    }*/
+    //if 
+      //  tmp = *stack.len_a;
+      
+      ret = ft_check_pos(stack.b[index_b], sorted);
+    if (ret == sorted[dig_num(sorted) - 1])
+        return (-1);
+    else
+        tmp = sorted[ret + 1];
+      while (i <= *stack.len_a && stack.a[i] != tmp)
+            i++;
+      
+       // printf("%d --- %d\n",stack.b[index_b], i);  
     //printf("ret = %d\n", ret);
-    return (ret);
+    return (i);
 }
 int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
 {

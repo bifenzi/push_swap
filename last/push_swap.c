@@ -6,12 +6,12 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/16 19:11:25 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/17 18:22:29 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int     ft_check_pos(t_data stack, int *sorted)
+int     ft_check_pos(int c, int *sorted)
 {
     int pos;
     int i = 0;
@@ -19,7 +19,7 @@ int     ft_check_pos(t_data stack, int *sorted)
    
     while (sorted[i])
     {
-        if (stack.a[0] == sorted[i])
+        if (c  == sorted[i])
         {
                return (i);
         }
@@ -72,17 +72,21 @@ int     ft_check_placements(t_data stack, int *sorted)
         i = 0;
         while (i <= *stack.len_b - 1)
         {
-            if (*stack.len_b - 1 > 0)
-            {
+            //if (*stack.len_b - 1 > 0)
+            //{
             index_b = i;
             k = 0;
             inst_b = smallest_b_instr(stack, index_b);
-            index_a = smallest_a_index(stack, index_b);
-            inst_a = smallest_a_instr(stack, index_a);            
+            index_a = smallest_a_index(stack, index_b, sorted);
+            inst_a = smallest_a_instr(stack, index_a);
+            printf("%d --- %d\n",stack.b[i], index_a);
+            if (index_a == -1)
+                break;         
             if (smallest_b_instr(stack, index_b) == -1)
                 index_b = *stack.len_b - 1 - index_b;
             if (smallest_a_instr(stack, index_a) == -1)
                     index_a = (*stack.len_a + 1) - index_a;
+
             if (shortest == -1)
             {
                 shortest = index_a + index_b;
@@ -95,22 +99,25 @@ int     ft_check_placements(t_data stack, int *sorted)
                 a = index_a;
                 b = index_b;
             }
-            }
-            else if (*stack.len_b - 1 == 0)
+           // }
+            /*else if (*stack.len_b - 1 == 0)
             {
                         
-                index_a = smallest_a_index(stack, index_b);
+                index_a = smallest_a_index(stack, index_b, sorted);
                 if (smallest_a_instr(stack, index_a) == -1)
                     a = (*stack.len_a + 1) - index_a;
                 else
-                    a = smallest_a_index(stack, index_b);
+                    a = smallest_a_index(stack, index_b, sorted);
                 b = 0;
-            }
+            }*/
             i++;
         }
-        printf("stack b = %d\n", stack.b[0]);
-        printf("stack a = %d\n", stack.a[0]);
-        printf("index a = %d\n", a);
+        
+        // printf("stack b = %d\n", stack.b[0]);
+        // printf("stack a = %d\n", stack.a[0]);
+        // printf("index a = %d\n", a);
+         //printf("index b = %d\n", b);
+         
         b_to_a(stack, a, b, inst_a, inst_b);
         pa_instruction(stack);
     }
@@ -152,12 +159,15 @@ int    ft_execute_sort(t_data stack, int *sorted)
     int j;
     int pos;
     int min;
+    int e;
     
     i = 0;
     h = 12;
-    while (*stack.len_a && ft_check_sort(stack))
+    e = *stack.len_a + 1;
+    while (e--)
     {
-        pos = ft_check_pos(stack, sorted);
+        pos = ft_check_pos(stack.a[0], sorted);
+       // printf("%d ---------%d\n",stack.a[0],pos);
         if(pos >= i && pos <= h)
         {
             i += pos;
@@ -173,6 +183,21 @@ int    ft_execute_sort(t_data stack, int *sorted)
             j++;
         }*/
     }
+    //printf("%d ---------%d\n",stack.a[0],pos);
+    /*j = 0;
+       while(j <= *stack.len_a)
+        {
+            printf("stack a %d\n", stack.a[j]);
+            j++;
+    }
+    printf("-------------------------b----------\n");
+     j = 0;  
+      while(j < *stack.len_b)
+        {
+            printf("stack b %d\n", stack.b[j]);
+            j++;
+        }*/
+    
     ft_check_placements(stack, sorted);
     return 0;
 }

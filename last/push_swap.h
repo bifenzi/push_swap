@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/16 11:14:49 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/17 17:41:14 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int         *ft_sort_table(int *a);
 int         ft_check_placements(t_data stack, int *sorted);
 int     smallest_b_instr(t_data stack, int index_b);
 int     smallest_a_instr(t_data stack, int index_a);
-int     smallest_a_index(t_data stack, int index_b);
+int     smallest_a_index(t_data stack, int index_b, int *sorted);
 int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b);
-int     ft_check_pos(t_data stack, int *sorted);
+int     ft_check_pos(int c, int *sorted);
 
 #endif
