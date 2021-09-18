@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:30:25 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/17 18:21:04 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/18 19:17:03 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,40 @@ int     smallest_a_instr(t_data stack, int index_a)
     else
         return (1);
 }
-int     dig_num(int *c)
-{
-    int i = 0;
+// int     dig_num(int *c)
+// {
+//     int i = 0;
 
-    while (c[i])
-        i++;
-    return i;
-}
+//     while (c[i])
+//         i++;
+//     return i;
+// }
 int     smallest_a_index(t_data stack, int index_b, int *sorted)
 {
     int i = 0;
-    int ret;
-    int tmp;
-    tmp = 0;
-    /*while (i < *stack.len_a)
+    int pos;
+    int j = 1;
+    pos = ft_check_pos(stack.b[index_b], sorted);
+    if (pos == 0)
     {
-        if (stack.b[index_b] < stack.a[i] && stack.a[tmp] >= stack.a[i])  
-            tmp = i;
-           
-        i++;
-    }*/
-    //if 
-      //  tmp = *stack.len_a;
-      
-      ret = ft_check_pos(stack.b[index_b], sorted);
-    if (ret == sorted[dig_num(sorted) - 1])
-        return (-1);
+        return 0;
+    }
+    else if (pos == ft_strlen((char*)(sorted)))
+    {
+        return (*stack.len_a);
+    }
     else
-        tmp = sorted[ret + 1];
-      while (i <= *stack.len_a && stack.a[i] != tmp)
+    {
+        while (sorted[pos + j] != stack.a[i] && i <= *stack.len_a)
+        {
             i++;
+            if (stack.a[i] == sorted[pos + 1])
+                return(i);
+        }
+            j++;
+            
+    }
+    //while 
       
        // printf("%d --- %d\n",stack.b[index_b], i);  
     //printf("ret = %d\n", ret);
@@ -75,6 +78,7 @@ int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
     j = 0;
     if (inst_b == -1 && inst_a == -1)
     {
+        
         while (a > 0 && b > 0)
         {
             rrr_instruction(stack);
@@ -115,6 +119,7 @@ int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
     }
     else if (inst_b == 1 && inst_a == -1)
     {
+        //printf("stack a =%d --- index a = %d\n",stack.b[b], a);
         while (a > 0)
         {
             rra_instruction(stack, j);

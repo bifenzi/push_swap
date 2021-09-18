@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/11 17:12:33 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:21:42 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	rb_instruction(t_data stack, int j)
 		stack.b[i] = stack.b[i + 1];
 		i++;
 	}
-	stack.b[*stack.len_b] = tmp;
+	stack.b[*stack.len_b - 1] = tmp;
 	if(j == 0)
 		ft_success("rb\n");
 }

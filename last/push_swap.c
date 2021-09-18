@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/17 18:22:29 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/18 18:13:19 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,50 +66,42 @@ int     ft_check_placements(t_data stack, int *sorted)
 
     shortest = -1;
       i = 0;
-      
     while (*stack.len_b - 1 >= 0)
     {
         i = 0;
         while (i <= *stack.len_b - 1)
         {
-            //if (*stack.len_b - 1 > 0)
-            //{
             index_b = i;
             k = 0;
             inst_b = smallest_b_instr(stack, index_b);
             index_a = smallest_a_index(stack, index_b, sorted);
             inst_a = smallest_a_instr(stack, index_a);
-            printf("%d --- %d\n",stack.b[i], index_a);
+            
             if (index_a == -1)
                 break;         
             if (smallest_b_instr(stack, index_b) == -1)
                 index_b = *stack.len_b - 1 - index_b;
             if (smallest_a_instr(stack, index_a) == -1)
                     index_a = (*stack.len_a + 1) - index_a;
-
+            
             if (shortest == -1)
             {
                 shortest = index_a + index_b;
                 a = index_a;
                 b = index_b;
             }
-            else if (shortest != -1 && index_a + index_b < shortest)
+            else if (shortest != -1 && index_a + index_b < shortest && *stack.len_b > 1)
             {
                 shortest = index_a + index_b;
                 a = index_a;
                 b = index_b;
             }
-           // }
-            /*else if (*stack.len_b - 1 == 0)
+            else if (*stack.len_b == 1 )
             {
-                        
-                index_a = smallest_a_index(stack, index_b, sorted);
-                if (smallest_a_instr(stack, index_a) == -1)
-                    a = (*stack.len_a + 1) - index_a;
-                else
-                    a = smallest_a_index(stack, index_b, sorted);
-                b = 0;
-            }*/
+                a = index_a;
+                b = index_b;
+            }
+            //printf("stack b =%d --- index b = %d\n",stack.b[i], a);
             i++;
         }
         
@@ -117,7 +109,19 @@ int     ft_check_placements(t_data stack, int *sorted)
         // printf("stack a = %d\n", stack.a[0]);
         // printf("index a = %d\n", a);
          //printf("index b = %d\n", b);
-         
+        k = 0;
+        while(k <= *stack.len_a)
+        {
+            printf(" stack a = %d\n",stack.a[k]);
+            k++;
+        }
+        printf("index a = %d\n", a);
+        k = 0;
+        while(k <= *stack.len_b - 1)
+        {
+            printf(" stack b ==== %d\n",stack.b[k]);
+            k++;
+        }
         b_to_a(stack, a, b, inst_a, inst_b);
         pa_instruction(stack);
     }
