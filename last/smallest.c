@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:30:25 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/18 19:17:03 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:57:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,44 +32,69 @@ int     smallest_a_instr(t_data stack, int index_a)
     else
         return (1);
 }
-// int     dig_num(int *c)
-// {
-//     int i = 0;
+int     dig_num(int *c)
+{
+    int i = 0;
 
-//     while (c[i])
-//         i++;
-//     return i;
-// }
+    while (c[i])
+        i++;
+    //i--;
+    return i;
+}
+int ft_check_sort_b(t_data stack,int *sorted, int index_b, int pos)
+{
+    int i = 0;
+    len = 
+    while (i < *stack.len_b - 1 && pos < )
+    {
+        if (stack.b[i] == sorted[pos])
+            pos++;
+        i++;
+    }
+        
+    return 0;
+}
 int     smallest_a_index(t_data stack, int index_b, int *sorted)
 {
     int i = 0;
     int pos;
     int j = 1;
+    int swap = 1;
+    int len = dig_num(sorted);
     pos = ft_check_pos(stack.b[index_b], sorted);
+    int new_pos = ft_check_pos_b(stack, sorted, index_b, pos);
+    //printf(" strleen = %d\n",len);
+    
     if (pos == 0)
     {
-        return 0;
+        
     }
-    else if (pos == ft_strlen((char*)(sorted)))
+    else if (pos + j == len)
     {
         return (*stack.len_a);
     }
     else
     {
-        while (sorted[pos + j] != stack.a[i] && i <= *stack.len_a)
+        while (i < *stack.len_a)
         {
-            i++;
-            if (stack.a[i] == sorted[pos + 1])
-                return(i);
+            printf("-----------%d\n",j);
+           if (sorted[pos + j] == stack.a[i])
+                return( pos + j);
+            else
+                i++;
+            if (swap == 1 && i == *stack.len_a + 1)
+            {
+                i = 0;
+                j++;
+            }
+            if (pos + j == *stack.len_a)
+            {
+                swap = -1;
+                j--; 
+            }
         }
-            j++;
-            
     }
-    //while 
-      
-       // printf("%d --- %d\n",stack.b[index_b], i);  
-    //printf("ret = %d\n", ret);
-    return (i);
+    return 0;
 }
 int     b_to_a(t_data stack, int a, int b, int inst_a, int inst_b)
 {

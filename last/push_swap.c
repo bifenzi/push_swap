@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/18 18:13:19 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/19 15:12:57 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ int     ft_check_placements(t_data stack, int *sorted)
             inst_b = smallest_b_instr(stack, index_b);
             index_a = smallest_a_index(stack, index_b, sorted);
             inst_a = smallest_a_instr(stack, index_a);
-            
-            if (index_a == -1)
-                break;         
+                
             if (smallest_b_instr(stack, index_b) == -1)
                 index_b = *stack.len_b - 1 - index_b;
             if (smallest_a_instr(stack, index_a) == -1)
