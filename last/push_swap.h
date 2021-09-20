@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/17 17:41:14 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:55:35 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@
 typedef struct	s_data
 {
 	int     *a;
+    int     index;
     int     *b;
     char    *inst;
-    int     *len_a;
-    int     *len_b;
-    int     *max_len;
+    int     len_a;
+    int     len_b;
+    int     max_len;
+    int     *sorted;
 }           t_data;
 
 int    ft_stack_b(t_data stack);
@@ -54,28 +56,29 @@ size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
 //void        ft_allocate(t_data stack, , int argc);
 void        ft_args(t_data stack, char **argv);
-int         ft_read_instructions(t_data stack);
 int         ft_instructions(t_data stack);         
 int         ft_free(t_data stack, int *sorted);
 int		    ft_isdigit(char c);
-void        ft_check_numbers(char **argv);
-void        ft_check_duplicate(t_data stack);
-int         ft_check_sort(t_data stack);
-int         *ft_read_arguments(t_data stack, int *a, char **argv);
+int         ft_check_number(char *str);
+int         ft_check_duplicate(int ac, char **av);
+int         ft_check_sort(t_data *stack);
+void         ft_read_arguments(t_data *stack, char **argv);
+int         check_overflow(char *str);
+long long	ft_overflowhelper(char *str);
 
 /*instructions*/
-void         pa_instruction(t_data stack);
-int          pb_instruction(t_data stack);
+void         pa_instruction(t_data *stack);
+int          pb_instruction(t_data *stack);
 
-void         sa_instruction(t_data stack, int l);
-void         sb_instruction(t_data stack, int l);
-void         ss_instruction(t_data stack);
-void         rra_instruction(t_data stack, int k);
-void         rrb_instruction(t_data stack, int k);
-void         rrr_instruction(t_data stack);
-void         ra_instruction(t_data stack, int j);
-void         rb_instruction(t_data stack, int j);
-void         rr_instruction(t_data stack);
+void         sa_instruction(t_data *stack, int l);
+void         sb_instruction(t_data *stack, int l);
+void         ss_instruction(t_data *stack);
+void         rra_instruction(t_data *stack, int k);
+void         rrb_instruction(t_data *stack, int k);
+void         rrr_instruction(t_data *stack);
+void         ra_instruction(t_data *stack, int j);
+void         rb_instruction(t_data *stack, int j);
+void         rr_instruction(t_data *stack);
 void	     ft_pa_instruction(t_data  stack, int len2);
 //
 
@@ -84,9 +87,9 @@ void	     ft_pa_instruction(t_data  stack, int len2);
 // static char		**ft_mal(char **strs, char const *s, char c);
 // static char		**ft_cpy(char **strs, char const *s, char c);
 // char			**ft_split(char const *s, char c);
-int    ft_execute_sort(t_data stack, int *sorted);
-int         *ft_sort_table(int *a);
-int         ft_check_placements(t_data stack, int *sorted);
+int     ft_execute_sort(t_data *stack);
+void    ft_sort_table(t_data *stack);
+int     ft_check_placements(t_data stack, int *sorted);
 int     smallest_b_instr(t_data stack, int index_b);
 int     smallest_a_instr(t_data stack, int index_a);
 int     smallest_a_index(t_data stack, int index_b, int *sorted);

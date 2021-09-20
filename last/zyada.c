@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/12 15:23:10 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:08:25 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,29 @@ int     ft_error(char *error)
 }
 
 
-int ft_free(t_data stack, int *sorted)
-{
-    free(stack.a);
-    free(stack.b);
-    free(stack.len_a);
-    free(stack.len_b);
-    free(sorted);
+// int ft_free(t_data *stack, int *sorted)
+// {
+//     free(sorted);
+//     free(stack);
 
-    stack.a = NULL;
-    stack.b = NULL;
-    stack.len_a = NULL;
-    stack.len_a = NULL;
-    return(1);
-}
+//     stack.a = NULL;
+//     stack.b = NULL;
+//     stack.len_a = NULL;
+//     stack.len_a = NULL;
+//     return(1);
+// }
 
-int         *ft_read_arguments(t_data stack, int *a, char **argv)
+void	ft_read_arguments(t_data *stack, char **argv)
 {
     int j;
 
     j = 0;
     while (argv[j + 1])
     {
-        stack.a[j] = ft_atoi(argv[j + 1]);
-        a[j] = stack.a[j];
+        stack->a[j] = ft_atoi(argv[j + 1]);
+        stack->sorted[j] = stack->a[j];
         j++;
     }
-    stack.a[j] = '\0';
-    a[j] = stack.a[j];
-    return(a);
+    stack->a[j] = '\0';
+    stack->sorted[j] = stack->a[j];
 }
