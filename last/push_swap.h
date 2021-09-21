@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 17:25:58 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:24:19 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		    ft_strcmp(const char *s1, const char *s2);
 //void        ft_allocate(t_data stack, , int argc);
 void        ft_args(t_data stack, char **argv);
 int         ft_instructions(t_data stack);         
-int         ft_free(t_data stack, int *sorted);
+int         ft_free(t_data *stack);
 int		    ft_isdigit(char c);
 int         ft_check_number(char *str);
 int         ft_check_duplicate(int ac, char **av);

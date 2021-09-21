@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 17:35:18 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:25:05 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,7 +394,7 @@ void    mid_a(t_data *stack, int *data)
         i++;
     }
 }
-int     b_index_in_a(t_data *stack, int *data)
+void     b_index_in_a(t_data *stack, int *data)
 {
     int i;
     int max;
@@ -501,7 +501,7 @@ int     main(int argc, char **argv)
     //fillindex(stack);
     //push_to_b(stack);
     //push_to_a(stack);
-    // ft_free(stack, sorted);    
+    ft_free(stack);    
     return (0);
 }
     // i = 0;
