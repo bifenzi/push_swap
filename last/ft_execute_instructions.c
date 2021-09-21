@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/20 18:10:37 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 09:57:49 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	pa_instruction(t_data *stack)
 		len_a = stack->len_a;
 		while (len_a > 0)
 		{
-			stack->a[len_a] = stack->a[len_a - 1];
+			stack->index[len_a] = stack->index[len_a - 1];
 			len_a--;
 		}
-		stack->a[0] = stack->b[0];
+		stack->index[0] = stack->b[0];
 		stack->len_b = stack->len_b - 1;
 		while (b <= stack->len_b)
 		{
@@ -53,10 +53,10 @@ int	pb_instruction(t_data *stack)
 			stack->b[len2] = stack->b[len2 - 1];
 			len2--;
 		}
-		stack->b[0] = stack->a[0];
+		stack->b[0] = stack->index[0];
 		while (a < stack->len_a)
 		{
-			stack->a[a] = stack->a[a + 1];
+			stack->index[a] = stack->index[a + 1];
 			a++;
 		}
 		stack->len_a = stack->len_a - 1;

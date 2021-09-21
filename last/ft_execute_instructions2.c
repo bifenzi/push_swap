@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/20 18:14:27 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 09:56:05 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	ra_instruction(t_data *stack, int j)
 	int i;
 	i = 0;
 	//len2 = *stack.len_a;
-	tmp = stack->a[0];
+	tmp = stack->index[0];
 	while(stack->len_a > i)
 	{
-		stack->a[i] = stack->a[i + 1];
+		stack->index[i] = stack->index[i + 1]; 
 		i++;
 	}
-	stack->a[stack->len_a] = tmp;
+	stack->index[stack->len_a] = tmp;
 	if(j == 0)
 		ft_success("ra\n");
 }
@@ -50,14 +50,14 @@ void    rra_instruction(t_data *stack, int k)
 {
     int tmp;
     int len2 = stack->len_a;
-    tmp = stack->a[stack->len_a];
+    tmp = stack->index[stack->len_a];
 
 		while(len2 >= 0)
 		{
-			stack->a[len2] = stack->a[len2 - 1];
+			stack->index[len2] = stack->index[len2 - 1];
 			len2--;
 		}
-		stack->a[0] = tmp;
+		stack->index[0] = tmp;
 	if(k == 0)
 		ft_success("rra\n");
 }
