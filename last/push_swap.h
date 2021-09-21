@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 12:12:12 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:25:58 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,12 @@ int     ft_check_placements(t_data *stack);
 int     smallest_b_instr(t_data *stack, int index_b);
 int     smallest_a_instr(t_data *stack, int index_a);
 int     smallest_a_index(t_data *stack, int index_b);
-int     b_to_a(t_data *stack, int a, int b, int inst_a, int inst_b);
+//int     b_to_a(t_data *stack, int a, int b, int inst_a, int inst_b);
 int     ft_check_pos(int c, int *sorted);
+void    b_to_a(t_data *stack, int *data);
+void    b_to_a2(t_data *stack, int *data);
+void    b_to_a3(t_data *stack, int *data);
+void    b_to_a4(t_data *stack, int *data);
+
 
 #endif

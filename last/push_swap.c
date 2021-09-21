@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:30:16 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:35:18 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,6 +327,9 @@ void    push_to_b(t_data *stack)
             j += stack->index[i];
             break ;
         }
+        else
+            pb_instruction(stack);
+        i++;
     }  
 }
 void init_data(int *data)
@@ -334,8 +337,8 @@ void init_data(int *data)
     data[MINB] = 0;
     data[MINA] = 0;
     data[MINAB] = -1;
-    data[INSTB] = 0;
-    data[INSTA] = 0;
+    data[INSTB] = 1;
+    data[INSTA] = 1;
 }
 
 void    max_a(t_data *stack, int *data)
@@ -351,7 +354,7 @@ void    max_a(t_data *stack, int *data)
         while (i <= stack->len_a)
         {
             if (stack->index[i] < stack->index[j])
-                data[CURRENTA] = stack->index[j];
+                data[CURRENTA] = j;
             j++;
         }
         i++;
@@ -371,7 +374,7 @@ void    min_a(t_data *stack, int *data)
         while (i <= stack->len_a)
         {
             if (stack->index[i] < stack->index[j])
-                data[CURRENTA] = stack->index[j];
+                data[CURRENTA] = j;
             j++;
         }
         i++;
@@ -435,39 +438,47 @@ void ft_min(t_data *stack, int *data)
 void    upside_down(t_data *stack, int *data)
 {
     int moyenne;
-    
+
     moyenne = stack->len_a/2;
-    if (data[MINA] < moyenne)
-        data[INSTA] = 1;
+    if (data[MINA] > moyenne)
+    {
+        data[INSTA] = 0;
+        data[MINA] = stack->len_a - data[MINA];
+    }
+        
+        
     moyenne = stack->len_b/2;
-    if (data[MINB] < moyenne)
-        data[INSTB] = 1;
+    if (data[MINB] > moyenne)
+    {
+        data[INSTB] = 0;
+        data[MINB] = stack->len_b - 1 - data[MINA];
+    }
+        
 }
+
 void    do_it(t_data *stack, int *data)
 {
     int i;
-    
-    if (data[INSTA] == 1)
-    {
-        
-    }
-    else if (data[INSTA] == 0)
-    {
-        
-    }
+    int j;
+
+    b_to_a(stack,data);
+    b_to_a2(stack, data);
+    b_to_a3(stack, data);
+    b_to_a4(stack, data);
 }
 void    push_to_a(t_data *stack)
 {
     int i;
     int j;
     int *data;
-    
-    while (i < stack->len_b)
+    while (stack->len_b != 0)
     {
-        init_data(*data);
-        ft_min(stack, data);
-        upside_down(stack, data);
-        do_it(stack, data);
+        printf("SSS\n");
+        //init_data(data);
+        //ft_min(stack, data);
+        //upside_down(stack, data);
+        //do_it(stack, data);
+        //pa_instruction(stack);
     }
 }
 int     main(int argc, char **argv)
@@ -486,10 +497,10 @@ int     main(int argc, char **argv)
     stack->sorted = malloc(sizeof(int) * (argc));
     stack->index = malloc(sizeof(int) * (argc));
     ft_remplir(stack, argc, argv);
-    ft_sort_table(stack);
-    fillindex(stack);
-    push_to_b(stack);
-    push_to_a(stack);
+    //ft_sort_table(stack);
+    //fillindex(stack);
+    //push_to_b(stack);
+    //push_to_a(stack);
     // ft_free(stack, sorted);    
     return (0);
 }
