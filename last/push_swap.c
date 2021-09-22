@@ -6,16 +6,16 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:25:05 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/22 16:40:14 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 int     ft_check_pos(int c, int *sorted)
 {
-    int pos;
+    // int pos;
     int i = 0;
-    int j = 0;
+    // int j = 0;
    
     while (sorted[i])
     {
@@ -307,6 +307,27 @@ void    fillindex(t_data *stack)
         i++;
     }
 }
+int     ft_check_sort(int *values)
+{
+    int before;
+    int len;
+
+    len = 0;
+    while (values[len])
+        len++;
+    len--;
+    // if (len == 0)
+    //     return (1); 
+    while(len)
+    {   
+        before = len - 1;
+        if(values[len] > values[before])
+            len--;
+        if(values[len] < values[before])
+            return(1);
+    }
+    return(0);
+}
 void    push_to_b(t_data *stack)
 {
     int i;
@@ -318,14 +339,13 @@ void    push_to_b(t_data *stack)
     i = 0;
     j = 12;
     k = 0;
-    while (i < stack->len_a)
+    while (ft_check_sort(stack->index))
     {
         if (stack->index[i] > k && stack->index[i] < j)
         {
             ra_instruction(stack, z);
             k += stack->index[i];
             j += stack->index[i];
-            break ;
         }
         else
             pb_instruction(stack);
@@ -347,11 +367,10 @@ void    max_a(t_data *stack, int *data)
     int j;
 
     i = 0;
-    
-    while (i <= stack->len_a)
+    while (i < stack->len_a)
     {
         j = i + 1;
-        while (i <= stack->len_a)
+        while (j < stack->len_a)
         {
             if (stack->index[i] < stack->index[j])
                 data[CURRENTA] = j;
@@ -367,11 +386,10 @@ void    min_a(t_data *stack, int *data)
     int j;
 
     i = 0;
-    
     while (i <= stack->len_a)
     {
         j = i + 1;
-        while (i <= stack->len_a)
+        while (j <= stack->len_a)
         {
             if (stack->index[i] < stack->index[j])
                 data[CURRENTA] = j;
@@ -387,12 +405,13 @@ void    mid_a(t_data *stack, int *data)
     
     i = 1;
 
-    while (i < stack->len_a)
+    while (i <= stack->len_a)
     {
-        if(data[CURRENTB] > stack->index[i - 1] && data[CURRENTB] < stack->index[i + 1])
+        if(data[CURRENTB] > stack->index[i - 1] && data[CURRENTB] < stack->index[i])
             data[CURRENTA] = i;
         i++;
     }
+    
 }
 void     b_index_in_a(t_data *stack, int *data)
 {
@@ -403,23 +422,30 @@ void     b_index_in_a(t_data *stack, int *data)
     i = 0;
     
     if (data[CURRENTB] == stack->max_len)
+    { 
         max_a(stack,data);
+    }
     else if (data[CURRENTB] == 0)
+    {
         min_a(stack, data);
+    }
+        
     else
+    {
         mid_a(stack, data);
+    }
 }
 
 void ft_min(t_data *stack, int *data)
 {
     int i;
-    int a;
-    int b;
+    // int a;
+    // int b;
     
     i = 0;
-    while (i < stack->len_b)
+    while (i <= stack->len_b - 1)
     {
-        data[CURRENTB] = i;
+        data[CURRENTB] = stack->b[i];
         b_index_in_a(stack, data);
         if (data[MINAB] == -1)
         {
@@ -443,7 +469,7 @@ void    upside_down(t_data *stack, int *data)
     if (data[MINA] > moyenne)
     {
         data[INSTA] = 0;
-        data[MINA] = stack->len_a - data[MINA];
+        data[MINA] = stack->len_a + 1 - data[MINA];
     }
         
         
@@ -451,15 +477,15 @@ void    upside_down(t_data *stack, int *data)
     if (data[MINB] > moyenne)
     {
         data[INSTB] = 0;
-        data[MINB] = stack->len_b - 1 - data[MINA];
+        data[MINB] = stack->len_b - data[MINA];
     }
         
 }
 
 void    do_it(t_data *stack, int *data)
 {
-    int i;
-    int j;
+    // int i;
+    // int j;
 
     b_to_a(stack,data);
     b_to_a2(stack, data);
@@ -468,17 +494,17 @@ void    do_it(t_data *stack, int *data)
 }
 void    push_to_a(t_data *stack)
 {
-    int i;
-    int j;
-    int *data;
+    // int i;
+    // int j;
+    int data[7];
     while (stack->len_b != 0)
     {
-        printf("SSS\n");
-        //init_data(data);
-        //ft_min(stack, data);
-        //upside_down(stack, data);
-        //do_it(stack, data);
-        //pa_instruction(stack);
+        init_data(data);
+        ft_min(stack, data);
+        // printf(" -- - - %d\n", data[MINA]);
+        upside_down(stack, data);
+        do_it(stack, data);
+        pa_instruction(stack);
     }
 }
 int     main(int argc, char **argv)
@@ -497,11 +523,11 @@ int     main(int argc, char **argv)
     stack->sorted = malloc(sizeof(int) * (argc));
     stack->index = malloc(sizeof(int) * (argc));
     ft_remplir(stack, argc, argv);
-    //ft_sort_table(stack);
-    //fillindex(stack);
-    //push_to_b(stack);
-    //push_to_a(stack);
-    ft_free(stack);    
+    ft_sort_table(stack);
+    fillindex(stack);
+    push_to_b(stack);
+    // push_to_a(stack);
+    // ft_free(stack);    
     return (0);
 }
     // i = 0;

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 09:56:05 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/22 15:59:27 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    rra_instruction(t_data *stack, int k)
     int len2 = stack->len_a;
     tmp = stack->index[stack->len_a];
 
-		while(len2 >= 0)
+		while(len2 > 0)
 		{
 			stack->index[len2] = stack->index[len2 - 1];
 			len2--;

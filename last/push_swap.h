@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:24:19 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/22 16:54:59 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ typedef struct	s_data
     int     *sorted;
 }           t_data;
 
-int    ft_stack_b(t_data stack);
-int    ft_stack_a(t_data stack, int len2);
-int    ft_check_sort_b(t_data stack);
-int    ft_finish_him(t_data stack, int len2);
-//int  ft_execute_sort(t_data stack)
 
 /*gnl functions*/
 int		    ft_finish(char **str, char **line);
@@ -64,13 +59,12 @@ int         ft_success(char *success);
 size_t	    ft_strlen(const char *str);
 int		    ft_strcmp(const char *s1, const char *s2);
 //void        ft_allocate(t_data stack, , int argc);
-void        ft_args(t_data stack, char **argv);
 int         ft_instructions(t_data stack);         
 int         ft_free(t_data *stack);
 int		    ft_isdigit(char c);
 int         ft_check_number(char *str);
 int         ft_check_duplicate(int ac, char **av);
-int         ft_check_sort(t_data *stack);
+int         ft_check_sort(int *stack);
 void         ft_read_arguments(t_data *stack, char **argv);
 int         check_overflow(char *str);
 long long	ft_overflowhelper(char *str);
@@ -88,7 +82,6 @@ void         rrr_instruction(t_data *stack);
 void         ra_instruction(t_data *stack, int j);
 void         rb_instruction(t_data *stack, int j);
 void         rr_instruction(t_data *stack);
-void	     ft_pa_instruction(t_data  stack, int len2);
 //
 
 // split
