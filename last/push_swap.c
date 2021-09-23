@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/22 16:40:14 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/23 18:38:52 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,13 +307,13 @@ void    fillindex(t_data *stack)
         i++;
     }
 }
-int     ft_check_sort(int *values)
+int     ft_check_sort(t_data *stack)
 {
     int before;
     int len;
 
     len = 0;
-    while (values[len])
+    while (len <= stack->len_a)
         len++;
     len--;
     // if (len == 0)
@@ -321,9 +321,9 @@ int     ft_check_sort(int *values)
     while(len)
     {   
         before = len - 1;
-        if(values[len] > values[before])
+        if(stack->index[len] > stack->index[before])
             len--;
-        if(values[len] < values[before])
+        if(stack->index[len] < stack->index[before])
             return(1);
     }
     return(0);
@@ -339,13 +339,18 @@ void    push_to_b(t_data *stack)
     i = 0;
     j = 12;
     k = 0;
-    while (ft_check_sort(stack->index))
+
+
+    while (ft_check_sort(stack))
     {
+    //     printf("stack index =  : %d\n", stack->index[0]);
+    //     printf("0K =  : %d\n", k);
+    //     printf("12J =  : %d\n", j);
         if (stack->index[i] > k && stack->index[i] < j)
         {
-            ra_instruction(stack, z);
             k += stack->index[i];
             j += stack->index[i];
+            ra_instruction(stack, z);
         }
         else
             pb_instruction(stack);
@@ -415,12 +420,6 @@ void    mid_a(t_data *stack, int *data)
 }
 void     b_index_in_a(t_data *stack, int *data)
 {
-    int i;
-    int max;
-    
-    max = 0;
-    i = 0;
-    
     if (data[CURRENTB] == stack->max_len)
     { 
         max_a(stack,data);
@@ -510,7 +509,6 @@ void    push_to_a(t_data *stack)
 int     main(int argc, char **argv)
 {
     t_data *stack;
-    
 
     stack = malloc(sizeof(t_data));
     // stack.len_a = malloc(sizeof(int));
@@ -526,8 +524,8 @@ int     main(int argc, char **argv)
     ft_sort_table(stack);
     fillindex(stack);
     push_to_b(stack);
-    // push_to_a(stack);
-    // ft_free(stack);    
+    //push_to_a(stack);
+    ft_free(stack);    
     return (0);
 }
     // i = 0;

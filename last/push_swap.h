@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/22 16:54:59 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:56:13 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int         ft_free(t_data *stack);
 int		    ft_isdigit(char c);
 int         ft_check_number(char *str);
 int         ft_check_duplicate(int ac, char **av);
-int         ft_check_sort(int *stack);
+int         ft_check_sort(t_data *stack);
 void         ft_read_arguments(t_data *stack, char **argv);
 int         check_overflow(char *str);
 long long	ft_overflowhelper(char *str);

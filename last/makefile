@@ -6,7 +6,7 @@
 #    By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/19 16:48:06 by mbifenzi          #+#    #+#              #
-#    Updated: 2021/09/22 15:16:38 by mbifenzi         ###   ########.fr        #
+#    Updated: 2021/09/23 18:01:40 by mbifenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJECT = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME) -g -fsanitize=address
+	@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME)
 	@echo "wlah ila goood"
 
 #bonus:
