@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/23 18:38:52 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/24 17:28:43 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,9 +438,7 @@ void     b_index_in_a(t_data *stack, int *data)
 void ft_min(t_data *stack, int *data)
 {
     int i;
-    // int a;
-    // int b;
-    
+
     i = 0;
     while (i <= stack->len_b - 1)
     {
@@ -485,7 +483,6 @@ void    do_it(t_data *stack, int *data)
 {
     // int i;
     // int j;
-
     b_to_a(stack,data);
     b_to_a2(stack, data);
     b_to_a3(stack, data);
@@ -506,6 +503,41 @@ void    push_to_a(t_data *stack)
         pa_instruction(stack);
     }
 }
+
+void    final_touch(t_data *stack)
+{
+    int i;
+    int moyenne;
+    int k;
+    
+    k = 0;
+    i = 0;
+    moyenne = stack->len_a/2;
+    while (i <= stack->len_a)
+    {
+        if (stack->index[i] == 0)
+            break;
+        i++;
+    }
+    if (i > moyenne)
+    {
+        while (i <= 0)
+        {
+            rra_instruction(stack, k);
+            i--;
+        }
+    }
+    else
+    {
+        while (i < 0)
+        {
+            ra_instruction(stack, k);
+            i--;
+        }
+    }
+    
+}
+
 int     main(int argc, char **argv)
 {
     t_data *stack;
@@ -524,7 +556,14 @@ int     main(int argc, char **argv)
     ft_sort_table(stack);
     fillindex(stack);
     push_to_b(stack);
-    //push_to_a(stack);
+    push_to_a(stack);
+    int i = 0;
+    while (i <= stack->len_a)
+    {
+        printf("%d\n", stack->index[i]);
+        i++;
+    }
+    final_touch(stack);
     ft_free(stack);    
     return (0);
 }
