@@ -44,11 +44,12 @@ int	pb_instruction(t_data *stack)
 
 	if (stack->len_a > 0)
 	{
-		i = 0;
-		while (i < stack->len_b)
+		i = stack->len_b;
+		// printf("pbpb--%d\n",stack->len_b);
+		while (i > 0)
 		{
-			stack->b[i + 1] = stack->b[i];
-			i++;
+			stack->b[i] = stack->b[i - 1];
+			i--;
 		}
 		stack->b[0] = stack->index[0];
 		stack->len_b++;

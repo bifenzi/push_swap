@@ -20,15 +20,24 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <ctype.h>
+# include <limits.h>
 
-# define MINB 0
-# define MINA 1
-# define MINAB 2
-# define INSTB 3
-# define INSTA 4
-# define CURRENTB 5
-# define CURRENTA 6
-# define MAX 7
+# define MINA 0
+# define MAXA 1
+# define LENA 2
+# define LENB 3
+# define NBA 4
+# define NBB 5
+# define NBAB 6
+# define FROMUPA 7
+# define FROMUPB 8
+# define NBRINSA 9
+# define NBRINSB 10
+# define NBRINSAB 11
+# define UPA 12
+# define UPB 13
+# define MAXIM INT_MAX
 
 
 
