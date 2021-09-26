@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/25 18:31:38 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/09/26 18:29:48 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void    ft_sort_table(t_data *stack)
     int j;
     int tmp;
     i = 0;
-    while (i <= stack->len_a)
+    while (i < stack->len_a)
     {
         stack->sorted[i] = stack->a[i];
         i++;
     }
     i = 0;
-    while (i <= stack->len_a)
+    while (i < stack->len_a)
     {
         j = i + 1;
-        while (j <= stack->len_a)
+        while (j < stack->len_a)
         {
             if (stack->sorted[i] > stack->sorted[j])
             {
@@ -159,7 +159,7 @@ int     ft_check_sort(t_data *stack)
     int len;
 
     len = 0;
-    while(len < stack->len_a)
+    while(len < stack->len_a - 1)
     {   
         before = len + 1;
         if(stack->index[len] > stack->index[before])
@@ -177,8 +177,6 @@ void    push_to_b(t_data *stack)
     z = 0;
     i = 0;
     k = 0;
-
-
     while (!ft_check_sort(stack))
     {
         if (stack->index[i] >= k && stack->index[i] < k + 12)
@@ -193,7 +191,7 @@ void    push_to_b(t_data *stack)
 
 void	initialiser(int *t)
 {
-    t[MINA] = 0;
+    t[MINA] = MAXIM;
     t[MAXA] = 0;
 	t[NBRINSA] = 0;
 	t[NBRINSB] = 0;
@@ -218,12 +216,25 @@ void	size(t_data *stack, int *t)
 	t[MAXA] = stack->index[0];
 	t[LENA] = 0;
 	t[LENB] = 0;
+    // while (i < stack->len_a)
+	// {
+	// 	printf("a------%d\n", stack->index[i]);
+	// 	i++;
+	// }
+    // i = 0;
+    // printf("-------------------------\n");
+    // while (i < stack->len_b)
+	// {
+	// 	printf("b------%d\n", stack->b[i]);
+	// 	i++;
+	// }
+    // i = 0;
 	while (i < stack->len_a)
 	{
 		if (stack->index[i] < t[MINA])
 		{
             t[MINA] = stack->index[i];
-            printf("%d\n", t[MINA]);
+            // printf("%d\n", t[MINA]);
 		
         }else if (stack->index[i] > t[MAXA])
 			t[MAXA] = stack->index[i];
@@ -270,12 +281,15 @@ void	ft_mid(int *t, t_data *a, int b)
     i = 0;
 	t[NBRINSA] = 1;
 	t[FROMUPA] = 1;
+
+    // if(b > a->index[0] && b > a->index[LENA - 1])
+    //     t[NBRINSA] = 0;
 	while (i < a->len_a && !(b < a->index[i + 1] && b > a->index[i]))
 	{
 		t[NBRINSA]++;
 		i++;
 	}
-	if (i > a->len_a)
+	if (i == a->len_a)
 		t[NBRINSA] = 0;
 }
 
@@ -431,7 +445,6 @@ void	push_to_a(t_data *stack)
 	{
 		initialiser(t);
 		size(stack, t);
-		find_element(t, stack);
         // printf("%d\n", stack->b[0]);
         // printf("%d\n", stack->b[1]);
         // printf("MINA--%d\n",t[0]);
@@ -448,6 +461,7 @@ void	push_to_a(t_data *stack)
         // printf("NBRINSAB--%d\n",t[11]);
         // printf("UPA--%d\n",t[12]);
         // printf("UPB--%d\n",t[13]);
+		find_element(t, stack);
 		actions(t, stack);
 	}
 }
@@ -455,84 +469,101 @@ void	push_to_a(t_data *stack)
 void    final_touch(t_data *stack)
 {
     int i;
-    int moyenne;
-    int k;
-    
-    k = 0;
+
     i = 0;
-    moyenne = stack->len_a/2;
-    while (i <= stack->len_a)
+    if (!ft_check_sort(stack))
     {
-        if (stack->index[i] == 0)
-            break;
-        i++;
-    }
-    if (i > moyenne)
-    {
-        while (i <= 0)
+        while (i < stack->len_a)
         {
-            rra_instruction(stack, k);
-            i--;
+            if (stack->index[i] == 0)
+                break ;
+            i++;
+        }
+        if (i > stack->len_a / 2)
+        {
+            i = stack->len_a - i;
+            while (i)
+            {
+                rra_instruction(stack, 0);
+                i--;
+            }
+        }
+        else
+        {
+              while (i)
+            {
+                ra_instruction(stack, 0);
+                i--;
+            }
         }
     }
-    else
-    {
-        while (i < 0)
-        {
-            ra_instruction(stack, k);
-            i--;
-        }
-    }
-    
 }
 
 int     main(int argc, char **argv)
 {
     t_data *stack;
-    // int i;
+    int i;
 
-    // i = 0;
+    i = 0;
     stack = malloc(sizeof(t_data));
-    stack->len_a = argc - 2;
+    stack->len_a = argc - 1;
     stack->len_b = 0;
-    stack->max_len = argc - 2;
-    stack->a = malloc(sizeof(int) * (argc));
-    stack->b = malloc(sizeof(int) *  (argc));
-    stack->sorted = malloc(sizeof(int) * (argc));
-    stack->index = malloc(sizeof(int) * (argc));
+    stack->max_len = argc - 1;
+    stack->a = malloc(sizeof(int) * (stack->len_a));
+    stack->b = malloc(sizeof(int) *  (stack->len_a));
+    stack->sorted = malloc(sizeof(int) * (stack->len_a));
+    stack->index = malloc(sizeof(int) * (stack->len_a));
     ft_remplir(stack, argc, argv);
     ft_sort_table(stack);
     fillindex(stack);
-    // while (i < stack->len_a)
-    // {
-    //     printf("a---%d\n", stack->index[i]);
-    //     i++;
-    // }
-    // i = 0;
-    // while (i < stack->len_b)
-    // {
-    //     printf("b---%d\n", stack->b[i]);
-    //     i++;
-    // }
-    // pb_instruction(stack);
-    // pb_instruction(stack);
-    // pb_instruction(stack);
-    // i = 0;
-    // while (i < stack->len_a)
-    // {
-    //     printf("a---%d\n", stack->index[i]);
-    //     i++;
-    // }
-    // i = 0;
-    // while (i < stack->len_b)
-    // {
-    //     printf("b---%d\n", stack->b[i]);
-    //     i++;
-    // }
     push_to_b(stack);
-    stack->len_a++;
     push_to_a(stack);
     final_touch(stack);
-    ft_free(stack);    
-    return (0);
+    
+    // pb_instruction(stack);
+    // pb_instruction(stack);
+    // pb_instruction(stack);
+    // rrb_instruction(stack, 0);
+    // rrb_instruction(stack, 0);
+    // pa_instruction(stack);
+    // pa_instruction(stack);
+    
+    // while (i < stack->len_a)
+    // {
+    //     printf("a---%d\n", stack->index[i]);
+    //     i++;
+    // }
+    // printf("-----------------------------------\n");
+    // i = 0;
+    // while (i < stack->len_b)
+    // {
+    //     printf("b---%d\n", stack->b[i]);
+    //     i++;
+    // }
+    // //ft_free(stack);    
+    // return (0);
 }
+    // while (i <= stack->len_a)
+    // {
+    //     printf("a---%d\n", stack->index[i]);
+    //     i++;
+    // }
+    // i = 0;
+    
+    // pb_instruction(stack);
+    // ra_instruction(stack, 0);
+    // pa_instruction(stack);
+    // // ra_instruction(stack, 0);
+    // // ra_instruction(stack, 0);
+    // i = 0;
+    // while (i <= stack->len_a)
+    // {
+    //     printf("a---%d\n", stack->index[i]);
+    //     i++;
+    // }
+    // i = 0;
+    // while (i <= stack->len_b)
+    // {
+    //     printf("b---%d\n", stack->b[i]);
+    //     i++;
+    // }
