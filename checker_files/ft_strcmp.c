@@ -6,21 +6,21 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:13:42 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/02 17:27:46 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/02 19:41:31 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t j;
-	size_t i;
+	size_t	j;
+	size_t	i;
 
 	i = 0;
 	j = 0;
-	while (s1[i] != '\0' && s2[j] != '\0' &&
-			((unsigned char *)s1)[i] == ((unsigned char *)s2)[j])
+	while (s1[i] != '\0' && s2[j] != '\0'
+		&& ((unsigned char *)s1)[i] == ((unsigned char *)s2)[j])
 	{
 		i++;
 		j++;

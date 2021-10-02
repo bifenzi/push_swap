@@ -6,74 +6,68 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/11 19:05:21 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/01 23:19:56 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void    ft_check_numbers(char **argv)
+int     ft_error(char *error)
 {
     int i;
-    int j;
-    long a;
-
-    i = 1;
-    while (argv[i])
-    {
-        j = 0;
-        if (argv[i][0] == '-')
-            j++;
-        while (argv[i][j])
-        {
-            if(!ft_isdigit((argv[i][j])))
-                ft_error("NOT INTEGER");
-            j++;
-        }
-        a = ft_atoi(argv[i]);
-        a = ft_atoi(argv[i]);
-        if (a > 2147483647 || a < -2147483647)
-        {
-            ft_error("NOT INTEGER\n");
-        }
-        i++;
-    }
-}
-
-void    ft_check_duplicate(t_data stack)
-{
-    int i;
-    int j ;
-
-    j = 0;
     i = 0;
-    while (stack.a[i])
+
+    while (error[i])
     {
-        j = 0;
-        while (stack.a[j])
-        {
-            if (stack.a[i] == stack.a[j] && j != i)
-                ft_error("error");
-            j++;
-        }
+        write(1, &error[i], 1);
         i++;
     }
+    exit(0);
+    return(1);
 }
 
-int     ft_check_sort(t_data stack)
+long long	ft_overflowhelper(char *str)
 {
-    int before;
-    int len;
+	long long	a;
+	long		sign;
 
-    len = *stack.len_a;
-    if (len == 0)
+	a = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+	{
+		str++;
+		sign = (-1);
+	}
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		a = a * 10 + *str - '0';
+		str++;
+	}
+	if (a < 0 && sign < 0)
+		return (0);
+	if (a < 0 && sign > 0)
+		return (-1);
+	return (a * sign);
+}
+
+int	ft_check_sort(t_data *stack)
+{
+	int	before;
+	int	len;
+
+	len = stack->len_a - 1;
+	if (len == 0)
         return(ft_error("KO")); 
-    while(len)
+    while (len)
     {
         before = len - 1;
-        if(stack.a[len] > stack.a[before])
+        if (stack->a[len] > stack->a[before])
             len--;
-        if(stack.a[len] < stack.a[before])
+        if(stack->a[len] < stack->a[before])
             return(ft_error("KO"));
     }
     if (len == 0)
