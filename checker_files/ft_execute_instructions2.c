@@ -6,11 +6,12 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:22 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/02 16:51:35 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 02:06:24 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
 void	ra_instruction(t_data *stack)
 {
 	int	tmp;

@@ -16,9 +16,9 @@ void	sa_instruction(t_data *stack, int l)
 {
 	int	tmp;
 
-	tmp = stack->a[0];
-	stack->a[0] = stack->a[1];
-	stack->a[1] = tmp;
+	tmp = stack->index[0];
+	stack->index[0] = stack->index[1];
+	stack->index[1] = tmp;
 	if (l == 0)
 		ft_success("sa\n");
 }

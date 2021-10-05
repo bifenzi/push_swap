@@ -10,28 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME = ../checker
+
 SRC = *.c
 
-OBJECT = *.o
-
-NAME = checker.a
+OBJECT = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) :
-	@gcc -Wall -Wextra -Werror -c $(SRC)
-	@ar rc $(NAME) $(OBJECT)
-	@ranlib $(NAME)
-	@gcc -o ./checker checker.c $(NAME) #-fsanitize=address
+$(NAME):
+	@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME)
 
-bonus :
-	@echo "hello world"
-
-clean :
-	@rm -rf *.o
-
-fclean : clean
-	@rm -rf $(NAME)
-
-re : fclean all
-
+clean:
+	@rm -f $(OBJECT)
+fclean: clean
+	@rm -f $(NAME)
+re: fclean all

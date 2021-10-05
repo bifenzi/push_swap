@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:29:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/02 18:30:22 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/03 19:27:19 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,18 @@ void	pb_instruction(t_data *stack)
 
 void	ss_instruction(t_data *stack)
 {
-	if(ft_strcmp(stack->inst, "sa") == 0 || ft_strcmp(stack->inst, "ss") == 0)
-		sa_instruction(stack);
-	if(ft_strcmp(stack->inst, "sb") == 0 || ft_strcmp(stack->inst, "ss") == 0)
-		sb_instruction(stack);
+	sa_instruction(stack);
+	sb_instruction(stack);
 }
 
 void	rrr_instruction(t_data *stack)
 {
-	if(ft_strcmp(stack->inst, "rra") == 0 || ft_strcmp(stack->inst, "rrr") == 0)
-		rra_instruction(stack);
-	if(ft_strcmp(stack->inst, "rrb") == 0 || ft_strcmp(stack->inst, "rrr") == 0)
-		rrb_instruction(stack);
+	rra_instruction(stack);
+	rrb_instruction(stack);
 }
 
 void	rr_instruction(t_data *stack)
 {
-	if(ft_strcmp(stack->inst, "ra") == 0 || ft_strcmp(stack->inst, "rr") == 0)
-		ra_instruction(stack);
-	if(ft_strcmp(stack->inst, "rb") == 0 || ft_strcmp(stack->inst, "rr") == 0)
-		rb_instruction(stack);
+	ra_instruction(stack);
+	rb_instruction(stack);
 }

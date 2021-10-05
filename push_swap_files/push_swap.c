@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/01 22:05:57 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/03 19:51:12 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	ft_sort_table(t_data *stack)
 				stack->sorted[i] = stack->sorted[j];
 				stack->sorted[j] = tmp;
 			}
+			if (stack->sorted[j] == stack->sorted[i])
+				ft_error("INVALID ARGUMENTS\n");
 			j++;
 		}
 		i++;
@@ -117,10 +119,15 @@ int	main(int argc, char **argv)
 	stack->b = malloc(sizeof(int) * (stack->len_a));
 	stack->sorted = malloc(sizeof(int) * (stack->len_a));
 	stack->index = malloc(sizeof(int) * (stack->len_a));
-	ft_remplir(stack, argc, argv);
+	ft_remplir(stack, argv);
 	ft_sort_table(stack);
 	fillindex(stack);
-	push_to_b(stack);
-	push_to_a(stack);
-	final_touch(stack);
+	if (argc == 4)
+		ft_sort3(stack);
+	else
+	{
+		push_to_b(stack);
+		push_to_a(stack);
+		final_touch(stack);
+	}
 }

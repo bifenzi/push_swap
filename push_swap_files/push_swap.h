@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/01 22:57:30 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 02:09:28 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_data
 	int		*sorted;
 }				t_data;
 
-void		ft_remplir(t_data *stack, int ac, char **av);
+void		ft_remplir(t_data *stack, char **av);
 void		fillindex(t_data *stack);
 
 /*gnl functions*/
@@ -76,7 +76,7 @@ int			ft_check_number(char *str);
 int			ft_check_duplicate(int ac, char **av);
 int			ft_check_sort(t_data *stack);
 void		ft_read_arguments(t_data *stack, char **argv);
-int			check_overflow(char *str);
+int			check_overflow(long r);
 long long	ft_overflowhelper(char *str);
 
 /*instructions*/
@@ -93,6 +93,7 @@ void		ra_instruction(t_data *stack, int j);
 void		rb_instruction(t_data *stack, int j);
 void		rr_instruction(t_data *stack);
 /*execution*/
+void		ft_sort3(t_data *stack);
 int			ft_execute_sort(t_data *stack);
 void		ft_sort_table(t_data *stack);
 int			ft_check_placements(t_data *stack);

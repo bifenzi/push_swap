@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:42:52 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/20 17:33:05 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 02:10:11 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ long	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
+	if (!ft_isdigit(str[i]) && str[i])
+		ft_error("INVALID ARGUMENT");
+	if (!check_overflow(result * sign))
+		ft_error("OVERFLOW\n");
 	return (result * sign);
 }

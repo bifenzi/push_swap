@@ -7,6 +7,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+
 typedef struct s_data
 {
 	int		*a;
@@ -14,14 +15,13 @@ typedef struct s_data
 	char	*inst;
 	int		len_a;
 	int		len_b;
+	int		*sorted;
 }	t_data;
 /*remplissage*/
-void		ft_remplir(t_data *stack, int ac, char **av);
+void		ft_remplir(t_data *stack, char **av);
 void		ft_read_arguments(t_data *stack, char **argv);
-int			ft_check_duplicate(int ac, char **av);
-int			ft_check_number(char *str);
-int			check_overflow(char *str);
-long long	ft_overflowhelper(char *str);
+void		ft_sort_table(t_data *stack);
+int			check_overflow(long r);
 /*gnl functions*/
 int			ft_finish(char **str, char **line);
 int			ft_remplissage(char **str, char **line, int len);
@@ -46,6 +46,9 @@ void		ft_check_numbers(char **argv);
 int			ft_check_sort(t_data *stack);
 
 /*instructions*/
+int			rotate(t_data *stack);
+int			reverte(t_data *stack);
+int			swap(t_data *stack);
 void		pa_instruction(t_data *stack);
 void		pb_instruction(t_data *stack);
 void		sa_instruction(t_data *stack);

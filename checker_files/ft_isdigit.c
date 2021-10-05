@@ -6,13 +6,13 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:39:27 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/04/09 17:16:59 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 02:05:22 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 	{
