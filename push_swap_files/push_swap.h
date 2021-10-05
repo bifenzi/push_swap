@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/05 02:09:28 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 16:23:48 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void		ra_instruction(t_data *stack, int j);
 void		rb_instruction(t_data *stack, int j);
 void		rr_instruction(t_data *stack);
 /*execution*/
+void		ft_sort5(t_data *stack);
 void		ft_sort3(t_data *stack);
 int			ft_execute_sort(t_data *stack);
 void		ft_sort_table(t_data *stack);

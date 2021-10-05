@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 17:12:48 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/03 19:54:25 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 16:58:19 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_instructions(t_data *stack)
 	int	i;
 
 	i = 0;
-	if (swap(stack) + rotate(stack) + reverte(stack) == 0)
+	if (swap(stack) + rotate(stack) + reverte(stack) + push(stack) == 0)
 		ft_error("INVALID INSTRUCTION \n");
 	i++;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:48:59 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/29 17:56:35 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 13:39:59 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	number_of_instructions(int *t, int v, int nb)
 		t[NBRINSA] = t[LENA] - t[NBRINSA];
 	}
 	if (nb > (t[LENB] / 2))
-	{	
+	{
 		t[FROMUPB] = 0;
 		nb = t[LENB] - nb;
 	}

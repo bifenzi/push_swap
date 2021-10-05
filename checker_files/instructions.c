@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 18:11:10 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/05 02:04:59 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 16:46:15 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,21 @@ int	swap(t_data *stack)
 	if (ft_strcmp(stack->inst, "ss") == 0)
 	{
 		ss_instruction(stack);
+		return (1);
+	}
+	return (0);
+}
+
+int	push(t_data *stack)
+{
+	if (ft_strcmp(stack->inst, "pb") == 0)
+	{
+		pb_instruction(stack);
+		return (1);
+	}
+	if (ft_strcmp(stack->inst, "pa") == 0)
+	{
+		pa_instruction(stack);
 		return (1);
 	}
 	return (0);

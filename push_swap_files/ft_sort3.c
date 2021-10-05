@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:16:07 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/05 02:09:55 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:00:04 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,16 @@ void	ft_sort3(t_data *stack)
 			sa_instruction(stack, 0);
 		}
 	}
+}
+
+void	ft_sort5(t_data *stack)
+{
+	pb_instruction(stack);
+	rra_instruction(stack, 0);
+	rra_instruction(stack, 0);
+	pb_instruction(stack);
+	sa_instruction(stack, 0);
+	ra_instruction(stack, 0);
+	pa_instruction(stack);
+	pa_instruction(stack);
 }

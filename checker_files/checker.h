@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 16:49:24 by mbifenzi          #+#    #+#             */
+/*   Updated: 2021/10/05 16:49:25 by mbifenzi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHECKER_H
 # define CHECKER_H
 # include <stdio.h>
@@ -49,6 +61,7 @@ int			ft_check_sort(t_data *stack);
 int			rotate(t_data *stack);
 int			reverte(t_data *stack);
 int			swap(t_data *stack);
+int			push(t_data *stack);
 void		pa_instruction(t_data *stack);
 void		pb_instruction(t_data *stack);
 void		sa_instruction(t_data *stack);
