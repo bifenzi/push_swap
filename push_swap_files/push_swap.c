@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/05 16:27:04 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/07 13:18:22 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,11 @@ int	main(int argc, char **argv)
 	fillindex(stack);
 	if (argc == 4)
 		ft_sort3(stack);
-	else if (argc == 6 && stack->index[1] == 4)
-		ft_sort5(stack);
+	else if (argc == 6 && (ft_sort5(stack) || ft_sort6(stack)))
+	{
+		 ft_sort5(stack);
+		  ft_sort6(stack);
+	}
 	else
 	{
 		push_to_b(stack);
