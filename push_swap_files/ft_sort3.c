@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:16:07 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/07 13:19:33 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:51:30 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_sort6(t_data *stack)
 int	ft_sort5(t_data *stack)
 {
 	if (stack->index[0] == 0 && stack->index[1] == 4 && stack->index[2] == 3
-		&& stack->index[3] == 1 && stack->index[4] == 2) 
+		&& stack->index[3] == 1 && stack->index[4] == 2)
 	{
 		pb_instruction(stack);
 		rra_instruction(stack, 0);

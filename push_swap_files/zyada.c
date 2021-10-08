@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:01:49 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/09/29 19:22:59 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/08 11:09:50 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_success(char *success)
 	int	i;
 
 	i = 0;
-	while (success[i])
+	while (success && success[i])
 	{
 		write(1, &success[i], 1);
 		i++;

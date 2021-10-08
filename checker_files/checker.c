@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:49:32 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/05 16:56:17 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:43:13 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,8 @@ int	main(int argc, char **argv)
 	stack->b = malloc(sizeof(int) * (stack->len_a));
 	stack->len_b = 0;
 	if (argc < 2)
-		ft_error("\ninvalid arguments\n");
-	else if (argc == 2)
-	{
-		stack->a[0] = ft_atoi(argv[1]);
-		ft_success("OK !");
 		exit(0);
-	}
-	else if (argc > 2)
+	else if (argc >= 2)
 		ft_remplir(stack, argv);
 	ft_sort_table(stack);
 	ft_read_instructions(stack);
