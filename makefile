@@ -47,7 +47,7 @@ all : $(NAME)
 
 bonus_all : $(BONUS_NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 		@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME)
 $(BONUS_NAME):
 		@gcc -Wall -Wextra -Werror $(BONUS_SRC) -o $(BONUS_NAME)

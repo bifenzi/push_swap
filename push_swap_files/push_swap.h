@@ -93,9 +93,11 @@ void		ra_instruction(t_data *stack, int j);
 void		rb_instruction(t_data *stack, int j);
 void		rr_instruction(t_data *stack);
 /*execution*/
-int			ft_sort5(t_data *stack);
-int			ft_sort6(t_data *stack);
+void		ft_sort5(t_data *stack);
+void		ft_sort4(t_data *stack);
 void		ft_sort3(t_data *stack);
+void		pushit(t_data *stack, int min, int fromup);
+int			sghir(t_data *stack, int *number);
 int			ft_execute_sort(t_data *stack);
 void		ft_sort_table(t_data *stack);
 int			ft_check_placements(t_data *stack);

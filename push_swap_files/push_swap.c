@@ -124,8 +124,10 @@ int	main(int argc, char **argv)
 	fillindex(stack);
 	if (argc == 4)
 		ft_sort3(stack);
-	else if (argc == 6 && (ft_sort5(stack) || ft_sort6(stack)))
-		ft_success(NULL);
+	if (argc == 5)
+		ft_sort5(stack);
+	else if (argc == 6)
+		ft_sort5(stack);
 	else
 	{
 		push_to_b(stack);
