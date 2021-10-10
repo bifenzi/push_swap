@@ -125,7 +125,7 @@ int	main(int argc, char **argv)
 	if (argc == 4)
 		ft_sort3(stack);
 	if (argc == 5)
-		ft_sort5(stack);
+		ft_sort4(stack);
 	else if (argc == 6)
 		ft_sort5(stack);
 	else
