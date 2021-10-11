@@ -45,7 +45,7 @@ BONUS_SRC = checker_files/checker.c \
 
 all : $(NAME)
 
-bonus_all : $(BONUS_NAME)
+bonus : $(BONUS_NAME)
 
 $(NAME): $(SRC)
 		@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME)

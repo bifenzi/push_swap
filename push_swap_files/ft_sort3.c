@@ -37,7 +37,6 @@ int	sghir(t_data *stack, int *number)
 		}
 		i++;
 	}
-	// printf("%d\n\n", min);
 	return (min);
 }
 
