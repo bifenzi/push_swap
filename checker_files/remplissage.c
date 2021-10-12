@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 21:09:57 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/03 20:37:26 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:45:54 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ft_read_arguments(t_data *stack, char **argv)
 	j = 0;
 	while (argv[j + 1])
 	{
+		if(strcmp(argv[j + 1], "-") == 0 || strcmp(argv[j + 1], "+") == 0)
+			ft_error("error\n");
 		stack->a[j] = ft_atoi(argv[j + 1]);
 		j++;
 	}
