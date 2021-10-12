@@ -1,0 +1,1 @@
+ARG=$(python3 ./algo_4.py); ./push_swap $ARG | ./checker $ARG
