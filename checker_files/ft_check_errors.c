@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:08:04 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/11 22:46:14 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/12 01:29:33 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ int	ft_check_sort(t_data *stack)
 
 	len = stack->len_a - 1;
 	if (stack->len_b != 0)
-		return (ft_error("KO"));
+		return (ft_error("KO\n"));
 	while (len)
 	{
 		before = len - 1;
 		if (stack->a[len] > stack->a[before])
 			len--;
 		if (stack->a[len] < stack->a[before])
-			return (ft_error("KO"));
+			return (ft_error("KO\n"));
 	}
 	if (len == 0)
-		return (ft_success("OK"));
+		return (ft_success("OK\n"));
 	return (0);
 }
