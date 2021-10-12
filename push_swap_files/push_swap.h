@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:09:12 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/07 13:18:05 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/11 21:46:14 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void		ra_instruction(t_data *stack, int j);
 void		rb_instruction(t_data *stack, int j);
 void		rr_instruction(t_data *stack);
 /*execution*/
+void		everything(t_data *stack, int argc);
 void		ft_sort5(t_data *stack);
 void		ft_sort4(t_data *stack);
 void		ft_sort3(t_data *stack);
@@ -106,6 +107,8 @@ void		actions(int *t, t_data *h);
 void		find_element(int *t, t_data *stack);
 void		min_instructions(int *t, int nb);
 void		push_to_a(t_data *stack);
+void		push_to_b(t_data *stack);
+void		final_touch(t_data *stack);
 int			ft_check_sort(t_data *stack);
 
 #endif

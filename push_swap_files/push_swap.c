@@ -6,7 +6,7 @@
 /*   By: mbifenzi <mbifenzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:15:44 by mbifenzi          #+#    #+#             */
-/*   Updated: 2021/10/08 11:08:12 by mbifenzi         ###   ########.fr       */
+/*   Updated: 2021/10/11 21:44:52 by mbifenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,16 +122,5 @@ int	main(int argc, char **argv)
 	ft_remplir(stack, argv);
 	ft_sort_table(stack);
 	fillindex(stack);
-	if (argc == 4)
-		ft_sort3(stack);
-	if (argc == 5)
-		ft_sort4(stack);
-	else if (argc == 6)
-		ft_sort5(stack);
-	else
-	{
-		push_to_b(stack);
-		push_to_a(stack);
-		final_touch(stack);
-	}
+	everything(stack, argc);
 }
